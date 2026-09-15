@@ -1,144 +1,346 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Certifications Page 2 | NourEddin Abu-Salhieh</title>
+    <title>Certifications &#183; Page 2 | NourEddin Abu-Salhieh</title>
+    <meta name="description" content="Older certificates and awards of NourEddin Abu-Salhieh.">
 
-    <link rel="stylesheet" href="style.css">
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem("theme");
+                if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+                document.documentElement.setAttribute("data-theme", t);
+            } catch (e) { }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap">
+
+    <link rel="stylesheet" href="style.css?v=35">
 </head>
 
 <body>
 
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+        <symbol id="i-badge" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="5.8"/><path d="m8.2 13.6-1.3 7.4L12 18.6l5.1 2.4-1.3-7.4"/></symbol>
+        <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 17.6l-5.9 3.1 1.2-6.6-4.8-4.6 6.6-.9z"/></symbol>
+        <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></symbol>
+        <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zm1.8 13.1H3.6V9h3.5v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 1 .8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-1-.8-1.7-1.8-1.7z"/></symbol>
+    </svg>
+
+
+    <div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+    <div class="progress-bar" aria-hidden="true"></div>
 
 
     <header class="navbar">
-
         <div class="nav-inner">
 
-            <a href="index.html#home" class="logo" aria-label="NourEddin Abu-Salhieh, home">NA</a>
+            <a href="index.html#home" class="brand" aria-label="NourEddin Abu-Salhieh, home">
+                <span class="logo">NA</span>
+                <span class="brand-text">
+                    <span class="brand-name">NourEddin Abu-Salhieh</span>
+                </span>
+            </a>
 
-            <nav class="nav-links">
+            <nav class="nav-links" aria-label="Main">
                 <a href="index.html#home">Home</a>
-                <a href="index.html#about">About</a>
-                <a href="certifications.html">Certifications</a>
                 <a href="index.html#projects">Projects</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="certifications.html" class="active">Certificates</a>
                 <a href="index.html#contact">Contact</a>
             </nav>
 
             <div class="nav-right">
-
-                <input type="checkbox" id="dark" class="theme-input">
-                <label for="dark" class="theme-switch" title="Switch between light and dark mode">
-                    <span class="theme-knob">
-                        <span class="moon">&#127769;</span>
-                        <span class="sun">&#9728;</span>
-                    </span>
-                </label>
+                <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch to dark mode">
+                    <span class="theme-knob"><span class="moon">&#127769;</span><span class="sun">&#9728;</span></span>
+                </button>
 
                 <a href="index.html" class="button ghost">&#8592; Back to Home</a>
 
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-label="Open menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
 
         </div>
-
     </header>
-
 
 
     <main class="page">
 
-
-
         <section class="page-head">
-
-            <h1>Certifications</h1>
-
-            <p>Page 2: my older certificates and my awards.</p>
-
+            <h1 class="reveal">Certificates &amp; <span class="grad-text">Awards</span></h1>
+            <p class="reveal" style="--d:120ms">The rest of my certificates, then my volunteering.</p>
         </section>
-
-
 
 
         <section class="group">
 
-            <div class="section-head">
-
+            <div class="section-head reveal">
                 <div>
-                    <span class="eyebrow">Certifications</span>
-                    <h2>Certificates</h2>
-                    <p>Page 2 of 2 &#183; showing 8 of 15</p>
+                    <h2>Certificates &amp; Awards</h2>
+                    <p>Page 2 of 2 &#183; the remaining 8 certificates</p>
                 </div>
+            </div>
+
+            <div class="proj-grid">
+
+        <article class="rev-card card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img src="images/certificates/emerging-tech-ai.jpg" alt="Emerging Technology Applications and Artificial Intelligence Technique" loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">Emerging Technology Applications and Artificial Intelligence Technique</p>
+            <p class="cert-meta">International Group For Training (IGIT)</p>
+            <p class="rev-desc">How new technologies and AI techniques are used in real work fields.</p>
+            <div class="rev-links">
+              <a href="images/certificates/emerging-tech-ai.jpg" target="_blank" rel="noopener">View certificate</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Emerging Technology Applications and Artificial Intelligence Technique</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Issued February 2024</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img src="images/certificates/low-fidelity-prototype-figma.jpg" alt="Designing a Low Fidelity Prototype in Figma" loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">Designing a Low Fidelity Prototype in Figma</p>
+            <p class="cert-meta">Coursera Project Network</p>
+            <p class="rev-desc">A guided project: building a complete low fidelity prototype in Figma step by step.</p>
+            <div class="rev-links">
+              <a href="images/certificates/low-fidelity-prototype-figma.jpg" target="_blank" rel="noopener">View certificate</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Designing a Low Fidelity Prototype in Figma</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Issued February 2024</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img src="images/certificates/start-the-ux-design-process.jpg" alt="Start the UX Design Process: Empathize, Define, and Ideate" loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">Start the UX Design Process: Empathize, Define, and Ideate</p>
+            <p class="cert-meta">Google &#183; Coursera</p>
+            <p class="rev-desc">Understanding the user, defining the real problem and finding design ideas for it.</p>
+            <div class="rev-links">
+              <a href="images/certificates/start-the-ux-design-process.jpg" target="_blank" rel="noopener">View certificate</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Start the UX Design Process: Empathize, Define, and Ideate</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Issued January 2024</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img src="images/certificates/foundations-of-ux-design.jpg" alt="Foundations of User Experience (UX) Design" loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">Foundations of User Experience (UX) Design</p>
+            <p class="cert-meta">Google &#183; Coursera</p>
+            <p class="rev-desc">What UX design is: the design process, design thinking and accessible design.</p>
+            <div class="rev-links">
+              <a href="images/certificates/foundations-of-ux-design.jpg" target="_blank" rel="noopener">View certificate</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Foundations of User Experience (UX) Design</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Issued December 2023</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img >
+        <div class="rev-sleeve">
+            <p class="kicker">Intermediate Python</p>
+            <p class="cert-meta">DataCamp</p>
+            <p class="rev-desc">Charts with Matplotlib, dictionaries, pandas data frames, logic and loops in Python.</p>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Intermediate Python</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Issued February 2026</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img >
+        <div class="rev-sleeve">
+            <p class="kicker">iOS Development</p>
+            <p class="cert-meta">Udemy</p>
+            <p class="rev-desc">Building an iOS mobile application, from the first screen to a working app.</p>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">iOS Development</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Issued March 2025</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img >
+        <div class="rev-sleeve">
+            <p class="kicker">Create High-Fidelity Designs and Prototypes in Figma</p>
+            <p class="cert-meta">Google &#183; Coursera</p>
+            <p class="rev-desc">Turning wireframes into high-fidelity mockups and clickable prototypes in Figma.</p>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Create High-Fidelity Designs and Prototypes in Figma</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Issued November 2024</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img >
+        <div class="rev-sleeve">
+            <p class="kicker">Conduct UX Research and Test Early Concepts</p>
+            <p class="cert-meta">Google &#183; Coursera</p>
+            <p class="rev-desc">Planning UX research, running usability studies and sharing what the users said.</p>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Conduct UX Research and Test Early Concepts</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Issued May 2024</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
 
             </div>
 
-            <div class="cards cards-3">
+        </section>
 
-                <div class="card">
-                    <span class="icon">&#10003;</span>
-                    <h3>Cognitive Distortions and Thinking Errors</h3>
-                    <p class="meta">International Group For Training (IGIT) &#183; Jul 2024</p>
-                    <p class="card-text">The common thinking errors people make and how they change our decisions.</p>
-                </div>
+        <section class="group">
 
-                <div class="card">
-                    <span class="icon">&#10003;</span>
-                    <h3>Conduct UX Research and Test Early Concepts</h3>
-                    <p class="meta">Google &#183; Coursera &#183; May 2024</p>
-                    <p class="card-text">Planning UX research, running usability studies and sharing what the users said.</p>
+            <div class="section-head reveal">
+                <div>
+                    <h2>Where I give my time</h2>
+                    <p>4 roles</p>
                 </div>
+            </div>
 
-                <div class="card">
-                    <span class="icon">&#10003;</span>
-                    <h3>Build Wireframes and Low-Fidelity Prototypes</h3>
-                    <p class="meta">Google &#183; Coursera &#183; Mar 2024</p>
-                    <p class="card-text">Turning an idea into paper wireframes, digital wireframes and a low-fidelity prototype.</p>
-                    <a class="card-button" href="certificates/build-wireframes-prototypes.pdf" target="_blank">Show More &#8599;</a>
-                </div>
+            <div class="proj-grid">
 
-                <div class="card">
-                    <span class="icon">&#10003;</span>
-                    <h3>Emerging Technology Applications and Artificial Intelligence Technique</h3>
-                    <p class="meta">International Group For Training (IGIT) &#183; Feb 2024</p>
-                    <p class="card-text">How new technologies and AI techniques are used in real work fields.</p>
-                </div>
-
-                <div class="card">
-                    <span class="icon">&#10003;</span>
-                    <h3>Web Design with HTML</h3>
-                    <p class="meta">Mibax &#183; Jun 2024</p>
-                    <p class="card-text">A one month program: HTML structure, links, images, lists, tables, forms and basic CSS.</p>
-                    <a class="card-button" href="certificates/web-design-with-html.pdf" target="_blank">Show More &#8599;</a>
-                </div>
-
-                <div class="card">
-                    <span class="icon">&#10003;</span>
-                    <h3>Start the UX Design Process: Empathize, Define, and Ideate</h3>
-                    <p class="meta">Google &#183; Coursera &#183; Jan 2024</p>
-                    <p class="card-text">Understanding the user, defining the real problem and finding design ideas for it.</p>
-                    <a class="card-button" href="certificates/start-the-ux-design-process.pdf" target="_blank">Show More &#8599;</a>
-                </div>
-
-                <div class="card">
-                    <span class="icon">&#10003;</span>
-                    <h3>Designing a Low Fidelity Prototype in Figma</h3>
-                    <p class="meta">Coursera Project Network &#183; Feb 2024</p>
-                    <p class="card-text">A guided project: building a complete low fidelity prototype in Figma step by step.</p>
-                    <a class="card-button" href="certificates/low-fidelity-prototype-figma.pdf" target="_blank">Show More &#8599;</a>
-                </div>
-
-                <div class="card">
-                    <span class="icon">&#10003;</span>
-                    <h3>Foundations of User Experience (UX) Design</h3>
-                    <p class="meta">Google &#183; Coursera &#183; Dec 2023</p>
-                    <p class="card-text">What UX design is: the design process, design thinking and accessible design.</p>
-                    <a class="card-button" href="certificates/foundations-of-ux-design.pdf" target="_blank">Show More &#8599;</a>
-                </div>
+        <article class="rev-card card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img src="images/certificates/elo-organizer-2025.jpg" alt="Organizer &#183; English Language Olympics" loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">Organizer &#183; English Language Olympics</p>
+            <p class="cert-meta">Examination &amp; Judging Halls Team Manager</p>
+            <p class="rev-desc">Managed the examination and judging hall teams, and the uploading of the contestants answers.</p>
+            <div class="rev-links">
+              <a href="images/certificates/elo-organizer-2025.jpg" target="_blank" rel="noopener">View certificate</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Organizer &#183; English Language Olympics</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Issued May 2025</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img src="images/certificates/elo-2024.jpg" alt="Volunteer &#183; English Language Olympics" loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">Volunteer &#183; English Language Olympics</p>
+            <p class="cert-meta">Examination Hall Manager</p>
+            <p class="rev-desc">Ran an examination hall and uploaded the contestants answers to the system.</p>
+            <div class="rev-links">
+              <a href="images/certificates/elo-2024.jpg" target="_blank" rel="noopener">View certificate</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Volunteer &#183; English Language Olympics</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Issued May 2024</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img src="images/certificates/elo-2023.jpg" alt="Volunteer &#183; English Language Olympics" loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">Volunteer &#183; English Language Olympics</p>
+            <p class="cert-meta">Judging Hall Manager</p>
+            <p class="rev-desc">Organised the teams presentations to the judges and prepared meals for the contestants.</p>
+            <div class="rev-links">
+              <a href="images/certificates/elo-2023.jpg" target="_blank" rel="noopener">View certificate</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Volunteer &#183; English Language Olympics</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Issued May 2023</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img >
+        <div class="rev-sleeve">
+            <p class="kicker">Volunteer &#183; Charity</p>
+            <p class="cert-meta">Ongoing</p>
+            <p class="rev-desc">Preparing charitable packages and distributing meals to those in need.</p>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Volunteer &#183; Charity</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Issued Sep 2023 &#8211; Present</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
 
             </div>
+
+        </section>
 
             <div class="pagination">
                 <a href="certifications.html">&#8592; Back</a>
@@ -146,93 +348,35 @@
                 <a href="certifications-2.html" class="active">2</a>
             </div>
 
-        </section>
-
-
-
-
-        <section class="group">
-
-            <div class="section-head">
-
-                <div>
-                    <span class="eyebrow">Awards</span>
-                    <h2>What I won</h2>
-                    <p>2 awards</p>
-                </div>
-
-            </div>
-
-            <div class="cards cards-3">
-
-                <div class="card">
-                    <span class="icon">&#9733;</span>
-                    <h3>2nd Place &#183; Business &amp; Social Technologies</h3>
-                    <p class="meta">13th National Technology Parade &#183; Besign</p>
-                    <p class="card-text">Another win for Besign: second place in the Business
-                        and Social Technologies category.</p>
-                </div>
-
-                <div class="card">
-                    <span class="icon">&#9733;</span>
-                    <h3>Best Entrepreneurial Project</h3>
-                    <p class="meta">Besign Application &#183; Mar 2026 &#8211; Jun 2026</p>
-                    <p class="card-text">Chosen as the best entrepreneurial project over 100 projects.</p>
-                </div>
-
-            </div>
-
-        </section>
-
-
-
 
         <footer class="footer" id="contact">
 
             <div class="footer-top">
 
-                <div class="footer-head">
+                <div class="footer-head reveal left">
                     <h2>Let's work together</h2>
-                    <p class="footer-line">
-                        Send me a message any time, I will reply as soon as I can.
-                    </p>
+                    <p class="footer-line">Send me a message any time, I will reply as soon as I can.</p>
                 </div>
 
                 <div class="contact-list">
 
-                    <a class="contact-item" href="mailto:noureddinabusalhieh@gmail.com" aria-label="Email">
-                        <span class="contact-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
-                            </svg>
-                        </span>
+                    <a class="contact-item reveal right" href="mailto:noureddinabusalhieh@gmail.com">
+                        <span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mail"></use></svg></span>
                         <span class="contact-value">noureddinabusalhieh@gmail.com</span>
                     </a>
 
-                    <a class="contact-item" href="tel:+962796217414" aria-label="Phone">
-                        <span class="contact-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/>
-                            </svg>
-                        </span>
+                    <a class="contact-item reveal right" href="tel:+962796217414">
+                        <span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"></use></svg></span>
                         <span class="contact-value">+962 79 621 7414</span>
                     </a>
 
-                    <a class="contact-item" href="https://github.com/NourEddin004" target="_blank" aria-label="GitHub">
-                        <span class="contact-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/>
-                            </svg>
-                        </span>
+                    <a class="contact-item reveal right" href="https://github.com/NourEddin004" target="_blank" rel="noopener">
+                        <span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-github"></use></svg></span>
                         <span class="contact-value">github.com/NourEddin004</span>
                     </a>
 
-                    <a class="contact-item" href="https://www.linkedin.com/in/noureddin-abu-salhieh-1135342aa/" target="_blank" aria-label="LinkedIn">
-                        <span class="contact-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zm1.8 13.1H3.6V9h3.5v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 1 .8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-1-.8-1.7-1.8-1.7z"/>
-                            </svg>
-                        </span>
+                    <a class="contact-item reveal right" href="https://www.linkedin.com/in/noureddin-abu-salhieh-1135342aa/" target="_blank" rel="noopener">
+                        <span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-linkedin"></use></svg></span>
                         <span class="contact-value">NourEddin Abu-Salhieh</span>
                     </a>
 
@@ -241,27 +385,27 @@
             </div>
 
             <div class="footer-bar">
-
                 <div class="footer-profile">
-
                     <span class="logo">NA</span>
-
                     <div>
                         <h3>NourEddin Abu-Salhieh</h3>
                         <p>Data Scientist &amp; AI Engineer</p>
                     </div>
-
                 </div>
 
                 <p class="copyright">&copy; 2026 NourEddin Abu-Salhieh. All Rights Reserved.</p>
-
             </div>
 
         </footer>
 
-
     </main>
 
+
+    <button type="button" class="to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+    </button>
+
+    <script src="main.js?v=33"></script>
 
 </body>
 

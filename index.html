@@ -1,88 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NourEddin Abu-Salhieh | Portfolio</title>
+    <title>NourEddin Abu-Salhieh | Data Scientist &amp; AI Engineer</title>
+    <meta name="description"
+        content="NourEddin Abu-Salhieh — Data Scientist and AI Engineer building machine learning and computer vision products, from the first sketch to the working demo.">
 
-    <link rel="stylesheet" href="style.css">
+    <!-- set the theme before first paint so there is no flash -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem("theme");
+                if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+                document.documentElement.setAttribute("data-theme", t);
+            } catch (e) { }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap">
+
+    <link rel="stylesheet" href="style.css?v=35">
 </head>
 
 <body>
 
+    <!-- ================= icon sprite ================= -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+        <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 5-6 7 6 7"/><path d="m16 5 6 7-6 7"/></symbol>
+        <symbol id="i-chip" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><rect x="9" y="9" width="6" height="6" rx="1.4"/><path d="M9 1.5V4M15 1.5V4M9 20v2.5M15 20v2.5M1.5 9H4M1.5 15H4M20 9h2.5M20 15h2.5"/></symbol>
+        <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2.1-.9 2.1-2 0-.5-.2-1-.6-1.4-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.1A5 5 0 0 0 21 12c0-5-4-9-9-9z"/><circle cx="8" cy="10" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16" cy="10.5" r="1.1"/></symbol>
+        <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+        <symbol id="i-badge" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="5.8"/><path d="m8.2 13.6-1.3 7.4L12 18.6l5.1 2.4-1.3-7.4"/></symbol>
+        <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.9a5.4 5.4 0 0 0-7.7 0L12 6l-1.1-1.1a5.4 5.4 0 1 0-7.7 7.7L12 21.4l8.8-8.8a5.4 5.4 0 0 0 0-7.7z"/></symbol>
+        <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 17.6l-5.9 3.1 1.2-6.6-4.8-4.6 6.6-.9z"/></symbol>
+        <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></symbol>
+        <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></symbol>
+        <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/></symbol>
+        <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.6 13.4 12.9 21a2 2 0 0 1-2.8 0L3 13.9V3h10.9l6.7 6.7a2 2 0 0 1 0 3.7z"/><circle cx="7.6" cy="7.6" r="1.4"/></symbol>
+        <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+        <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><path d="M20 14h-2a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1z"/><path d="M4 14h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M20 18.5v.5a2.5 2.5 0 0 1-2.5 2.5H13"/></symbol>
+        <symbol id="i-calc" viewBox="0 0 24 24"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M8 6.5h8M8 11h.01M12 11h.01M16 11h.01M8 14.6h.01M12 14.6h.01M16 14.6h.01M8 18.2h4"/></symbol>
+        <symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M9 9.5V20M15 9.5V20"/></symbol>
+        <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></symbol>
+        <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M5 15c-1.5 1.5-2 6-2 6s4.5-.5 6-2a3 3 0 0 0-4-4z"/><path d="M9.5 14.5 6 13c2-6 6-9.5 12-9.5C18 9.5 14.5 13.5 8.5 15.5z"/><circle cx="14.5" cy="8.5" r="1.6"/></symbol>
+        <symbol id="i-eye" viewBox="0 0 24 24"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+        <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 2.5 14 9l6.5 2-6.5 2-2 6.5-2-6.5L3.5 11 10 9z"/><path d="M19 3v3M20.5 4.5h-3"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></symbol>
+        <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zm1.8 13.1H3.6V9h3.5v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 1 .8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-1-.8-1.7-1.8-1.7z"/></symbol>
+    </svg>
 
 
+    <!-- ================= ambient layers ================= -->
+    <div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+    <div class="progress-bar" aria-hidden="true"></div>
+
+
+    <!-- ================= navbar ================= -->
     <header class="navbar">
-
         <div class="nav-inner">
 
-            <a href="#home" class="logo" aria-label="NourEddin Abu-Salhieh, home">NA</a>
+            <a href="#home" class="brand" aria-label="NourEddin Abu-Salhieh, home">
+                <span class="logo">NA</span>
+                <span class="brand-text">
+                    <span class="brand-name">NourEddin Abu-Salhieh</span>
+                </span>
+            </a>
 
-            <nav class="nav-links">
+            <nav class="nav-links" aria-label="Main">
                 <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#certifications">Certifications</a>
+                <a href="#skills">Skills</a>
                 <a href="#projects">Projects</a>
+
+                <a href="#certifications">Certificates</a>
                 <a href="#contact">Contact</a>
             </nav>
 
             <div class="nav-right">
+                <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch to dark mode">
+                    <span class="theme-knob"><span class="moon">&#127769;</span><span class="sun">&#9728;</span></span>
+                </button>
 
-                <input type="checkbox" id="dark" class="theme-input">
-                <label for="dark" class="theme-switch" title="Switch between light and dark mode">
-                    <span class="theme-knob">
-                        <span class="moon">&#127769;</span>
-                        <span class="sun">&#9728;</span>
-                    </span>
-                </label>
+                <a href="#contact" class="button primary">Hire Me <span class="arrow">&#8599;</span></a>
 
-                <a href="#contact" class="button primary">Hire Me</a>
-
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-label="Open menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
 
         </div>
-
     </header>
 
 
+    <main>
 
-    <main class="page">
-
-
-
+        <!-- ================= hero ================= -->
         <section class="hero" id="home">
 
-            <p class="hero-role">Data Scientist &amp; AI Engineer</p>
+            <div class="hero-band">
 
-            <div class="hero-title">
+                <p class="typed-wrap reveal">
+                    I build <span class="typed" data-typed='["machine learning models","computer vision systems","AI powered products","interfaces people enjoy"]'></span><span class="caret"></span>
+                </p>
 
-                <h1 class="hero-word">NourEddin</h1>
+                <div class="hero-stage">
 
-                <img src="profile.png" alt="NourEddin Abu-Salhieh" class="hero-photo">
+                    <h1 class="hero-backdrop">
+                        <span class="sr-only">NourEddin Abu-Salhieh &#8212; </span>
+                        <span class="hero-line" data-split="0">AI Engineer</span>
+                        <span class="hero-line" data-split="11">UX Designer</span>
+                    </h1>
 
-                <h2 class="hero-word">Abu-Salhieh</h2>
+                    <div class="hero-figure">
+                        <img src="profile.png" alt="NourEddin Abu-Salhieh" class="hero-photo" width="422" height="591">
+                    </div>
+
+                </div>
 
             </div>
 
             <div class="hero-row">
 
-                <a href="#contact" class="button primary">Hire Me</a>
+                <a href="#projects" class="button primary">See my work <span class="arrow">&#8599;</span></a>
 
                 <div class="hero-stats">
-
                     <div class="stat">
-                        <h3>3+</h3>
-                        <p>Projects</p>
+                        <h3><span data-count="4" data-suffix="+">0</span></h3>
+                        <p>Projects built</p>
                     </div>
-
-
                     <div class="stat">
-                        <h3>15</h3>
+                        <h3><span data-count="16">0</span></h3>
                         <p>Certifications</p>
                     </div>
-
+                    <div class="stat">
+                        <h3><span data-count="2">0</span></h3>
+                        <p>Awards won</p>
+                    </div>
                 </div>
 
             </div>
@@ -90,319 +150,564 @@
         </section>
 
 
+        <div class="page">
 
 
+        <!-- ================= tech marquee ================= -->
+        <section class="reveal" aria-label="Tools I work with" style="margin-bottom:clamp(80px,10vw,120px)">
+            <div class="marquee">
+                <div class="marquee-track">
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="">PyTorch</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="">TensorFlow</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="">scikit-learn</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="">pandas</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="">NumPy</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="">OpenCV</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="">Jupyter</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="">MySQL</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="">Java</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="">C++</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="">JavaScript</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="">HTML5</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="">CSS3</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="">Figma</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="">Git</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="">Azure AI</span>
+                    <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="">VS Code</span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= about ================= -->
         <section class="about" id="about">
 
-            <img src="profile.png" alt="Photo of NourEddin Abu-Salhieh" class="about-photo">
+            <div class="about-media reveal left">
+                <img src="profile.png" alt="Photo of NourEddin Abu-Salhieh" class="about-photo" width="422" height="591">
 
-            <div class="about-text">
+                <div class="float-badge b1">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="">
+                    Data Science &amp; AI
+                </div>
 
-                <span class="eyebrow">About me</span>
+                <div class="float-badge b2">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="">
+                    UI/UX Design
+                </div>
+            </div>
 
-                <h2>Turning AI models into simple apps</h2>
+            <div class="about-text reveal right" style="--d:120ms">
+                <h2>Turning AI models into <span class="grad-text">simple apps</span></h2>
 
                 <p>
-                    Hi, I'm NourEddin. I build things at the intersection of AI,
-                    hardware, and mobile design. My focus is machine learning and
-                    computer vision, and I love turning advanced AI models into
-                    simple apps that people enjoy using.
+                    Hi, I'm NourEddin. I build things at the intersection of AI, hardware and
+                    mobile design. My focus is machine learning and computer vision, and I love
+                    turning advanced AI models into simple apps that people enjoy using.
                 </p>
 
                 <div class="chips">
                     <span class="chip">Machine Learning</span>
                     <span class="chip">Computer Vision</span>
                     <span class="chip">UI/UX Design</span>
+                    <span class="chip">Data Analysis</span>
                 </div>
 
-                <a href="NourEddin-Abu-Salhieh-CV.pdf" class="button primary" download>Download CV &#8599;</a>
-
+                <div class="about-actions">
+                    <a href="NourEddin-Abu-Salhieh-CV.pdf" class="button primary" download>
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-download"></use></svg>
+                        Download CV
+                    </a>
+                    <a href="#contact" class="button ghost">Let's talk <span class="arrow">&#8599;</span></a>
+                </div>
             </div>
 
         </section>
 
 
-
-
-        <section class="certifications" id="certifications">
-
-            <div class="section-head">
-
-                <div>
-                    <span class="eyebrow">Certifications</span>
-                    <h2>My newest certificates</h2>
-                    <p>Volunteering, all 15 certificates and my awards are on the next page.</p>
-                </div>
-
-                <a href="certifications.html" class="button ghost">Show More</a>
-
-            </div>
-
-            <div class="cards cards-4">
-
-                <div class="card">
-                    <span class="icon">&#10003;</span>
-                    <h3>Microsoft Azure AI Fundamentals</h3>
-                    <p class="meta">Microsoft &#183; May 2026</p>
-                    <p class="card-text">The core ideas of AI and machine learning, and how to use them with the Azure AI services.</p>
-                    <a class="card-button" href="certificates/azure-ai-fundamentals.png" target="_blank">Show More &#8599;</a>
-                </div>
-
-                <div class="card">
-                    <span class="icon">&#10003;</span>
-                    <h3>Intermediate Python</h3>
-                    <p class="meta">Data Camp &#183; Feb 2026</p>
-                    <p class="card-text">Charts with Matplotlib, dictionaries, pandas data frames, logic and loops in Python.</p>
-                </div>
-
-                <div class="card">
-                    <span class="icon">&#10003;</span>
-                    <h3>HCIA-AI V4.0 Course</h3>
-                    <p class="meta">Huawei ICT Academy &#183; Oct 2025</p>
-                    <p class="card-text">An overview of AI, machine learning, deep learning and the MindSpore framework.</p>
-                    <a class="card-button" href="certificates/hcia-ai-v4.png" target="_blank">Show More &#8599;</a>
-                </div>
-
-                <div class="card">
-                    <span class="icon">&#10003;</span>
-                    <h3>Introduction to Python</h3>
-                    <p class="meta">Data Camp &#183; Aug 2025</p>
-                    <p class="card-text">The basics of Python: variables, lists, functions, packages and NumPy arrays.</p>
-                    <a class="card-button" href="certificates/introduction-to-python.pdf" target="_blank">Show More &#8599;</a>
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-
+        <!-- ================= skills ================= -->
         <section class="skills" id="skills">
 
-            <div class="section-head">
-
+            <div class="section-head reveal">
                 <div>
-                    <span class="eyebrow">Skills</span>
-                    <h2>What I use to build</h2>
+                    <h2>Skills and Tools</h2>
                     <p>The tools and the skills behind my projects.</p>
                 </div>
-
             </div>
 
-            <div class="cards cards-4">
+            <div class="skills-grid">
+            <article class="skill-card card-shell reveal">
+              <p class="kicker skill-group">Programming</p>
+              <ul class="skill-grid">
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" width="48" height="48" loading="lazy"><span>Python</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="" width="48" height="48" loading="lazy"><span>Java</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="" width="48" height="48" loading="lazy"><span>C++</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="" width="48" height="48" loading="lazy"><span>HTML5</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="" width="48" height="48" loading="lazy"><span>CSS3</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="" width="48" height="48" loading="lazy"><span>JavaScript</span></li>
+              </ul>
+            </article>
 
-                <div class="card light">
+            <article class="skill-card card-shell reveal">
+              <p class="kicker skill-group">Data Science &amp; AI</p>
+              <ul class="skill-grid">
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="" width="48" height="48" loading="lazy"><span>scikit-learn</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="" width="48" height="48" loading="lazy"><span>PyTorch</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="" width="48" height="48" loading="lazy"><span>TensorFlow</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="" width="48" height="48" loading="lazy"><span>pandas</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="" width="48" height="48" loading="lazy"><span>NumPy</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="" width="48" height="48" loading="lazy"><span>OpenCV</span></li>
+              </ul>
+            </article>
 
-                    <span class="icon">&#128187;</span>
-                    <h3>Programming</h3>
+            <article class="skill-card card-shell reveal">
+              <p class="kicker skill-group">Databases &amp; cloud</p>
+              <ul class="skill-grid">
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="" width="48" height="48" loading="lazy"><span>MySQL</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="" width="48" height="48" loading="lazy"><span>Azure AI</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="" width="48" height="48" loading="lazy"><span>Jupyter</span></li>
+              </ul>
+            </article>
 
-                    <ul>
-                        <li>
-                            <img class="logo-icon" alt=""
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
-                            Python
-                        </li>
-                        <li>
-                            <img class="logo-icon" alt=""
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg">
-                            Java
-                        </li>
-                        <li>
-                            <img class="logo-icon" alt=""
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg">
-                            C++
-                        </li>
-                        <li>
-                            <img class="logo-icon" alt=""
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
-                            HTML
-                        </li>
-                        <li>
-                            <img class="logo-icon" alt=""
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">
-                            CSS
-                        </li>
-                    </ul>
-
-                </div>
-
-                <div class="card light">
-
-                    <span class="icon">&#129302;</span>
-                    <h3>Data Science &amp; AI</h3>
-
-                    <ul>
-                        <li>
-                            <span class="dot"></span>
-   
-                            Machine Learning
-                        </li>
-                        <li>
-                            <span class="dot"></span>
-
-                            Deep Learning
-                        </li>
-                        <li>
-                            <span class="dot"></span>
-
-                            Data Analysis
-                        </li>
-                        <li>
-                            <span class="dot"></span>
-
-                            Image Preprocessing
-                        </li>
-                        <li>
-                            <span class="dot"></span>
-
-                            Database
-                        </li>
-                        <li>
-                            <span class="dot"></span>
-
-                            Data Mining
-                        </li>
-                        <li>
-                            <span class="dot"></span>
-
-                            Data Entry
-                        </li>
-                    </ul>
-
-                </div>
-
-                <div class="card light">
-
-                    <span class="icon">&#127912;</span>
-                    <h3>Design &amp; Marketing</h3>
-
-                    <ul>
-                        <li>
-                            <img class="logo-icon" alt=""
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg">
-                            UI/UX Design
-                        </li>
-                        <li><span class="dot"></span> Social Media</li>
-                        <li><span class="dot"></span> Marketing</li>
-                        <li><span class="dot"></span> Sales</li>
-                    </ul>
-
-                </div>
-
-                <div class="card light">
-
-                    <span class="icon">&#129309;</span>
-                    <h3>Personal Skills</h3>
-
-                    <ul>
-                        <li><span class="dot"></span> Team Work</li>
-                        <li><span class="dot"></span> Work Under Stress</li>
-                        <li><span class="dot"></span> Customer Assistance</li>
-                        <li><span class="dot"></span> Good With Numbers</li>
-                    </ul>
-
-                </div>
-
+            <article class="skill-card card-shell reveal">
+              <p class="kicker skill-group">Design &amp; tools</p>
+              <ul class="skill-grid">
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="" width="48" height="48" loading="lazy"><span>Figma</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" alt="" width="48" height="48" loading="lazy"><span>Canva</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="" width="48" height="48" loading="lazy"><span>Git</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" width="48" height="48" loading="lazy"><span>GitHub</span></li>
+                <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="" width="48" height="48" loading="lazy"><span>VS Code</span></li>
+              </ul>
+            </article>
             </div>
+
+            <p class="kicker skill-also reveal">Also</p>
+            <ul class="skill-list reveal">
+                <li>Machine Learning</li>
+                <li>Deep Learning</li>
+                <li>Computer Vision</li>
+                <li>Data Analysis</li>
+                <li>Image Preprocessing</li>
+                <li>Data Mining</li>
+                <li>UI/UX Design</li>
+                <li>Responsive Web Design</li>
+                <li>Team Work</li>
+                <li>Work Under Stress</li>
+                <li>Customer Assistance</li>
+                <li>Marketing</li>
+                <li>Sales</li>
+            </ul>
 
         </section>
-
-
 
 
         <section class="projects" id="projects">
 
-            <div class="section-head">
-
+            <div class="section-head reveal">
                 <div>
-                    <span class="eyebrow">Projects</span>
-                    <h2>Ideas I designed and built with AI</h2>
-                    <p>Three products, from the first sketch to the working demo.</p>
+                    <h2>Ideas I designed and built with <span class="grad-text">AI</span></h2>
+                    <p>Mobile apps, web builds and design work, from the first sketch to the working demo.</p>
                 </div>
+            </div>
+
+            <h3 class="subsection-title reveal" id="apps">Mobile App Projects</h3>
+
+            <div class="proj-grid">
+
+        <article class="rev-card rev-card--shot card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img src="images/projects/besign-front.jpg" width="960" height="1067" alt="Besign screenshot" loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">About Besign</p>
+            <p class="rev-desc">AI-powered custom tailoring platform, my graduation project: a Flutter marketplace with on-device body measurement and AI garment design.</p>
+            <p class="rev-tags">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Dart</span>
+              <span class="tech-tag">Riverpod</span>
+              <span class="tech-tag">Supabase</span>
+              <span class="tech-tag">TensorFlow Lite</span>
+            </p>
+            <div class="rev-links">
+              <span class="rev-note">Private project &#8212; source available on request</span>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Besign</h3>
+            <div class="rev-badges">
+            <span class="project-badge">2nd Place &#183; NTP13 2026</span>
+            <span class="project-badge">Best Entrepreneurial Project</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
 
             </div>
 
-            <div class="cards cards-3">
+            <h3 class="subsection-title reveal" id="web">Web Projects</h3>
 
-                <div class="card">
-                    <h3>Besign</h3>
-                    <p class="card-text">
-                        An AI powered custom tailoring platform that have the solution
-                        for all the problems.
-                    </p>
-                </div>
+            <div class="proj-grid">
 
-                <div class="card">
-                    <h3>Vocal-Eyes</h3>
-                    <p class="card-text">
-                        An AI glasses solution of 90% problems that face the blind
-                        people, and help them to interact with life.
-                    </p>
-                </div>
+        <article class="rev-card rev-card--shot card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img src="images/projects/invite-sites-front.jpg" width="960" height="1067" alt="Invite Sites screenshot" loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">About Invite Sites</p>
+            <p class="rev-desc">Invitation-website service: personalised sites with RSVP, maps and photos, in Arabic, English or both, on one shareable link.</p>
+            <p class="rev-tags">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">SVG Animation</span>
+              <span class="tech-tag">Arabic / English RTL</span>
+            </p>
+            <div class="rev-links">
+              <a href="https://invite-sites.netlify.app" target="_blank" rel="noopener">Live Site</a>
+              <a href="https://github.com/NourEddin004/invite-sites" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Invite Sites</h3>
+            <div class="rev-badges">
+            <span class="project-badge">Live</span>
+            <span class="project-badge badge-muted">Own product</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card rev-card--shot card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img src="images/projects/hopebridge-front.jpg" width="960" height="1067" alt="HopeBridge screenshot" loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">About HopeBridge</p>
+            <p class="rev-desc">Charity platform for donors, families and administrators: 28 pages in plain HTML and CSS. The earlier PHP and MySQL build is kept in the repository history.</p>
+            <p class="rev-tags">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">PHP &amp; MySQL (earlier version)</span>
+            </p>
+            <div class="rev-links">
+              <a href="https://mayahelmi.github.io/hopebridge-charity-platform/" target="_blank" rel="noopener">Live Demo</a>
+              <a href="https://github.com/MayaHelmi/hopebridge-charity-platform" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">HopeBridge</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Orange Digital Center project</span>
+            <span class="project-badge badge-muted">Static version</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card rev-card--shot card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img src="images/projects/eight-weeks-at-orange-front.jpg" width="960" height="1067" alt="Eight Weeks at Orange screenshot" loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">About Eight Weeks at Orange</p>
+            <p class="rev-desc">Our field-training presentation as a single-file website: week-by-week results and a link to every repository.</p>
+            <p class="rev-tags">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+            </p>
+            <div class="rev-links">
+              <a href="https://mayahelmi.github.io/field-training-presentation/" target="_blank" rel="noopener">Live Site</a>
+              <a href="https://github.com/MayaHelmi/field-training-presentation" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Eight Weeks at Orange</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">With Maya Helmi</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
 
-                <div class="card">
-                    <h3>Glame-AI</h3>
-                    <p class="card-text">
-                        An AI powered platform that help girls with their make-up
-                        with try on feature.
-                    </p>
-                </div>
+            </div>
+
+            <h3 class="subsection-title reveal" id="figma">Figma Projects</h3>
+
+            <div class="proj-grid">
+
+        <article class="rev-card rev-card--shot card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <div class="fig-art fig-art--warm" aria-hidden="true">
+            <span class="fig-canvas">
+              <span class="fig-frame f1"><i></i><i></i><i></i></span>
+              <span class="fig-frame f2"><i></i><i></i><i></i></span>
+              <span class="fig-frame f3"><i></i><i></i><i></i></span>
+            </span>
+            <img class="fig-mark" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="" width="30" height="30" loading="lazy">
+          </div>
+          <img class="fig-shot" src="images/projects/figma-food-bites.jpg" alt="Food Bites screens" data-optional loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">About Food Bites</p>
+            <p class="rev-desc">A food ordering app designed end to end in Figma: menu browsing, item detail and checkout screens.</p>
+            <p class="rev-tags">
+              <span class="tech-tag">Figma</span>
+              <span class="tech-tag">Mobile UI</span>
+              <span class="tech-tag">Prototyping</span>
+            </p>
+            <div class="rev-links">
+              <a href="https://www.figma.com/design/8AIoPLfeHzErPX2FhHKkTI/Food-Bites?node-id=0-1&t=wDCLf9DMuG5v3QYb-1" target="_blank" rel="noopener">Open in Figma</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Food Bites</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Mobile app design</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card rev-card--shot card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <div class="fig-art fig-art--cool" aria-hidden="true">
+            <span class="fig-canvas">
+              <span class="fig-frame f1"><i></i><i></i><i></i></span>
+              <span class="fig-frame f2"><i></i><i></i><i></i></span>
+              <span class="fig-frame f3"><i></i><i></i><i></i></span>
+            </span>
+            <img class="fig-mark" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="" width="30" height="30" loading="lazy">
+          </div>
+          <img class="fig-shot" src="images/projects/figma-car-services.jpg" alt="Car Services screens" data-optional loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">About Car Services</p>
+            <p class="rev-desc">A car servicing app designed in Figma: booking a service, tracking it and managing the vehicle.</p>
+            <p class="rev-tags">
+              <span class="tech-tag">Figma</span>
+              <span class="tech-tag">Mobile UI</span>
+              <span class="tech-tag">Prototyping</span>
+            </p>
+            <div class="rev-links">
+              <a href="https://www.figma.com/design/BKJ584PMNfBylKezzMho2P/Car-Services?node-id=0-1&t=nz0ECo8bW8l3lnqt-1" target="_blank" rel="noopener">Open in Figma</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Car Services</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Mobile app design</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card rev-card--shot card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <div class="fig-art fig-art--wire" aria-hidden="true">
+            <span class="fig-canvas">
+              <span class="fig-frame f1"><i></i><i></i><i></i></span>
+              <span class="fig-frame f2"><i></i><i></i><i></i></span>
+              <span class="fig-frame f3"><i></i><i></i><i></i></span>
+            </span>
+            <img class="fig-mark" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="" width="30" height="30" loading="lazy">
+          </div>
+          <img class="fig-shot" src="images/projects/figma-hopebridge-wireframes.jpg" alt="HopeBridge Wireframes screens" data-optional loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">About HopeBridge Wireframes</p>
+            <p class="rev-desc">The wireframe set behind the HopeBridge charity platform, laid out before the pages were built.</p>
+            <p class="rev-tags">
+              <span class="tech-tag">Figma</span>
+              <span class="tech-tag">Wireframing</span>
+              <span class="tech-tag">Web UI</span>
+            </p>
+            <div class="rev-links">
+              <a href="https://www.figma.com/design/tMWo0XexJzQcxXI9hLDwaO/HopeBridge?node-id=4405-3140&t=3cs5B3ymzvNa1SEn-1" target="_blank" rel="noopener">Open in Figma</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">HopeBridge Wireframes</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Web wireframe</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card rev-card--shot card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <div class="fig-art fig-art--mint" aria-hidden="true">
+            <span class="fig-canvas">
+              <span class="fig-frame f1"><i></i><i></i><i></i></span>
+              <span class="fig-frame f2"><i></i><i></i><i></i></span>
+              <span class="fig-frame f3"><i></i><i></i><i></i></span>
+            </span>
+            <img class="fig-mark" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="" width="30" height="30" loading="lazy">
+          </div>
+          <img class="fig-shot" src="images/projects/figma-dog-walker.jpg" alt="Dog Walker screens" data-optional loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">About Dog Walker</p>
+            <p class="rev-desc">My first mobile wireframe: a dog walking app mapped out screen by screen.</p>
+            <p class="rev-tags">
+              <span class="tech-tag">Figma</span>
+              <span class="tech-tag">Wireframing</span>
+              <span class="tech-tag">Mobile UI</span>
+            </p>
+            <div class="rev-links">
+              <a href="https://www.figma.com/design/GnmsVwezYsnea1kh8txaiW/Dog-walker?node-id=0-1&t=jRmmUGQlcd58RT4l-1" target="_blank" rel="noopener">Open in Figma</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Dog Walker</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">First mobile wireframe</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
 
             </div>
 
         </section>
 
 
+        <!-- ================= experience ================= -->
+        <section class="experience" id="experience">
+
+            <div class="section-head reveal">
+                <div>
+                    <h2>Orange Digital Center</h2>
+                    <p>Eight weeks of field training.</p>
+                </div>
+            </div>
+
+            <article class="experience-card card-shell reveal">
+                <h3>Orange Digital Center</h3>
+                <p class="experience-role">Full-Stack Web Development Intern</p>
+                <p class="experience-dates">July 2026 &#8211; Present</p>
+
+                <ul class="experience-list">
+                    <li>Built responsive pages with HTML5, CSS3 (Flexbox, Grid) and Bootstrap, then moved to JavaScript: DOM manipulation, form handling, local storage, and the Fetch API with a Firebase Firestore backend.</li>
+                    <li>Wrote server-side PHP: 45 exercises on the fundamentals, self-posting forms with validation, and a charity platform (HopeBridge) with accounts, sessions, an approval workflow and a MySQL database.</li>
+                    <li>Took HopeBridge from research to delivery: empathy maps, user journeys, wireframes and mockups, an ER diagram, then 28 finished pages for donors, families and administrators.</li>
+                    <li>Shipped every task as a public GitHub repository, most with a live GitHub Pages deployment, and co-built a single-page website to present the eight weeks with a teammate.</li>
+                </ul>
+
+                <p class="experience-links">
+                    <a href="https://mayahelmi.github.io/field-training-presentation/" target="_blank" rel="noopener">View the training presentation website &rarr;</a>
+                </p>
+            </article>
+
+        </section>
+
+
+        <section class="certifications" id="certifications">
+
+            <div class="section-head reveal">
+                <div>
+                    <h2>Certificates &amp; Awards</h2>
+                    <p>My awards and newest certificates. All 18, plus my volunteering, are on the next page.</p>
+                </div>
+
+                <a href="certifications.html" class="button ghost">All 18 certificates &amp; awards <span class="arrow">&#8594;</span></a>
+            </div>
+
+            <div class="proj-grid">
+
+        <article class="rev-card rev-card--award card-shell reveal" tabindex="0">
+        <div class="rev-well award-seal">
+          <span class="seal-rings" aria-hidden="true"></span>
+          <img class="seal-crest" src="images/logos/asu-logo.png"
+               alt="Applied Sciences Private University" width="120" height="120" loading="lazy">
+          <span class="seal-rule" aria-hidden="true"></span>
+          <p class="seal-title">Best Entrepreneurial Project</p>
+          <p class="seal-meta">Applied Sciences Private University &#183; 2026</p>
+        <div class="rev-sleeve">
+            <p class="kicker">Best Entrepreneurial Project</p>
+            <p class="cert-meta">Besign &#183; Applied Sciences Private University</p>
+            <p class="rev-desc">Chosen as the best entrepreneurial project over more than 100 projects at the university.</p>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Best Entrepreneurial Project</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Issued May 2026</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img src="images/certificates/ntp13-2nd-place.jpg" alt="2nd Place &#8212; NTP13 2026 certificate" loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">2nd Place &#8212; NTP13 2026</p>
+            <p class="cert-meta">13th National Technology Parade &#183; Business &amp; Social Technologies</p>
+            <p class="rev-desc">Second place across Jordan in the Business and Social Technologies category, for Besign.</p>
+            <div class="rev-links">
+              <a href="images/certificates/ntp13-2nd-place.jpg" target="_blank" rel="noopener">View certificate</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">2nd Place &#8212; NTP13 2026</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Issued July 2026</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+        <article class="rev-card card-shell reveal" tabindex="0">
+        <div class="rev-well">
+          <img src="images/certificates/azure-ai-fundamentals.jpg" alt="Microsoft Azure AI Fundamentals certificate" loading="lazy">
+        <div class="rev-sleeve">
+            <p class="kicker">Microsoft Azure AI Fundamentals</p>
+            <p class="cert-meta">Microsoft &#183; AI-900</p>
+            <p class="rev-desc">The core ideas of AI and machine learning, and how to use them with the Azure AI services.</p>
+            <div class="rev-links">
+              <a href="images/certificates/azure-ai-fundamentals.jpg" target="_blank" rel="noopener">View certificate</a>
+            </div>
+        </div>
+        </div>
+          <div class="rev-foot">
+            <h3 class="rev-title">Microsoft Azure AI Fundamentals</h3>
+            <div class="rev-badges">
+            <span class="project-badge badge-muted">Issued May 2026</span>
+            </div>
+            <p class="rev-hint">Hover or tap for details</p>
+          </div>
+        </article>
+
+            </div>
+
+        </section>
 
 
         <footer class="footer" id="contact">
 
             <div class="footer-top">
 
-                <div class="footer-head">
+                <div class="footer-head reveal left">
                     <h2>Let's work together</h2>
-                    <p class="footer-line">
-                        Send me a message any time, I will reply as soon as I can.
-                    </p>
+                    <p class="footer-line">Send me a message any time, I will reply as soon as I can.</p>
                 </div>
 
-                <!-- every contact stays on one single line -->
                 <div class="contact-list">
 
-                    <a class="contact-item" href="mailto:noureddinabusalhieh@gmail.com" aria-label="Email">
-                        <span class="contact-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
-                            </svg>
-                        </span>
+                    <a class="contact-item reveal right" href="mailto:noureddinabusalhieh@gmail.com">
+                        <span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mail"></use></svg></span>
                         <span class="contact-value">noureddinabusalhieh@gmail.com</span>
                     </a>
 
-                    <a class="contact-item" href="tel:+962796217414" aria-label="Phone">
-                        <span class="contact-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/>
-                            </svg>
-                        </span>
+                    <a class="contact-item reveal right" href="tel:+962796217414">
+                        <span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"></use></svg></span>
                         <span class="contact-value">+962 79 621 7414</span>
                     </a>
 
-                    <a class="contact-item" href="https://github.com/NourEddin004" target="_blank" aria-label="GitHub">
-                        <span class="contact-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/>
-                            </svg>
-                        </span>
+                    <a class="contact-item reveal right" href="https://github.com/NourEddin004" target="_blank" rel="noopener">
+                        <span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-github"></use></svg></span>
                         <span class="contact-value">github.com/NourEddin004</span>
                     </a>
 
-                    <a class="contact-item" href="https://www.linkedin.com/in/noureddin-abu-salhieh-1135342aa/" target="_blank" aria-label="LinkedIn">
-                        <span class="contact-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zm1.8 13.1H3.6V9h3.5v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 1 .8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-1-.8-1.7-1.8-1.7z"/>
-                            </svg>
-                        </span>
+                    <a class="contact-item reveal right" href="https://www.linkedin.com/in/noureddin-abu-salhieh-1135342aa/" target="_blank" rel="noopener">
+                        <span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-linkedin"></use></svg></span>
                         <span class="contact-value">NourEddin Abu-Salhieh</span>
                     </a>
 
@@ -411,27 +716,29 @@
             </div>
 
             <div class="footer-bar">
-
                 <div class="footer-profile">
-
                     <span class="logo">NA</span>
-
                     <div>
                         <h3>NourEddin Abu-Salhieh</h3>
                         <p>Data Scientist &amp; AI Engineer</p>
                     </div>
-
                 </div>
 
                 <p class="copyright">&copy; 2026 NourEddin Abu-Salhieh. All Rights Reserved.</p>
-
             </div>
 
         </footer>
 
+        </div>
 
     </main>
 
+
+    <button type="button" class="to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+    </button>
+
+    <script src="main.js?v=33"></script>
 
 </body>
 
