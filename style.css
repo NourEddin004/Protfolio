@@ -650,7 +650,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 
     --figure-w:    min(clamp(300px, 44vw, 620px), var(--figure-cap));
     --photo-ratio: 1.4;      /* 1484 / 1060, enhanced portrait proportions */
-    --crop-top:    0.074;   /* blank rows sitting above his head in the source */
+    --crop-top:    0.06;   /* blank rows sitting above his head in the source */
     --crop-bottom: 0.82;     /* cut across the thigh */
 
     position: relative;
