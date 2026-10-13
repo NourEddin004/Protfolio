@@ -2659,3 +2659,13 @@ html[data-theme="dark"] .skill-grid img[src*="github"] { filter: invert(1); }
 .rev-card:hover .fig-shot,
 .rev-card:focus-within .fig-shot,
 .rev-card.is-open .fig-shot { transform: scale(1.05); filter: saturate(.6) brightness(.8); }
+
+/* Besign award ribbons: outside the artwork so the detail sleeve remains usable. */
+.besign-awarded { overflow: visible; margin-top: 32px; }
+.besign-awarded .rev-well { border-radius: var(--radius, 20px) var(--radius, 20px) 0 0; }
+.besign-medals { position: absolute; inset: -32px -12px auto; z-index: 3; display: flex; justify-content: space-between; pointer-events: none; }
+.besign-medal { width: clamp(78px, 8vw, 112px); height: auto; filter: drop-shadow(0 5px 8px #0003); transition: opacity .25s ease; }
+.medal-gold { transform: rotate(-12deg); }
+.medal-silver { transform: rotate(12deg); }
+.besign-awarded:hover .besign-medals, .besign-awarded:focus-within .besign-medals, .besign-awarded.is-open .besign-medals { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .besign-medal { transition: none; } }
