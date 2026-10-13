@@ -23,7 +23,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap">
 
-    <link rel="stylesheet" href="style.css?v=35">
+    <link rel="stylesheet" href="style.css?v=40">
 </head>
 
 <body>
@@ -63,7 +63,15 @@
 
             <div class="nav-right">
                 <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch to dark mode">
-                    <span class="theme-knob"><span class="moon">&#127769;</span><span class="sun">&#9728;</span></span>
+                    <span class="theme-knob" aria-hidden="true">
+                        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                            <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"/>
+                        </svg>
+                        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                            <circle cx="12" cy="12" r="4"/>
+                            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>
+                        </svg>
+                    </span>
                 </button>
 
                 <a href="index.html" class="button ghost">Back to Home</a>

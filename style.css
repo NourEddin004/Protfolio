@@ -529,8 +529,7 @@ section {
     background: var(--grad);
     display: grid;
     place-items: center;
-    font-size: 11px;
-    line-height: 1;
+    color: #fff;
     transition: left .45s var(--ease), transform .45s var(--ease);
 }
 
@@ -539,6 +538,7 @@ html[data-theme="dark"] .theme-knob {
     transform: rotate(360deg);
 }
 
+.theme-knob svg { width: 14px; height: 14px; display: block; }
 .theme-knob .sun  { display: none; }
 html[data-theme="dark"] .theme-knob .moon { display: none; }
 html[data-theme="dark"] .theme-knob .sun  { display: block; }
