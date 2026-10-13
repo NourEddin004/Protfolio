@@ -636,22 +636,17 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 /* --- stage: backdrop type behind, portrait in front --- */
 
 .hero-stage {
-    /* The portrait was sized purely by width, so on a short window it pushed
-       the call to action and the stats off the bottom of the screen. Its height
-       is now also capped by whatever the viewport has left after the navbar and
-       that row, so they are always above the fold.
-
-       visible height = width x photo-ratio x (crop-bottom - crop-top)
-                      = width x 1.4005 x 0.6965
-                      = width x 0.9754                                        */
-    --hero-reserve: 250px;                 /* navbar + the row beneath the band */
-    --figure-cap:  calc((100vh - var(--hero-reserve)) / 0.9754);
-    --figure-cap:  calc((100svh - var(--hero-reserve)) / 0.9754);
-
-    --figure-w:    min(clamp(300px, 44vw, 620px), var(--figure-cap));
+    /* Reserve room for the navbar, caption, button and stats. Derive the
+       portrait cap from its current crop so image updates cannot push the
+       controls below the initial viewport. */
     --photo-ratio: 1.4;      /* 1484 / 1060, enhanced portrait proportions */
-    --crop-top:    0.06;   /* blank rows sitting above his head in the source */
-    --crop-bottom: 0.82;     /* cut across the thigh */
+    --crop-top: 0.06;
+    --crop-bottom: 0.82;
+    --visible-ratio: calc(var(--photo-ratio) * (var(--crop-bottom) - var(--crop-top)));
+    --hero-reserve: 250px;
+    --figure-cap: calc((100vh - var(--hero-reserve)) / var(--visible-ratio));
+    --figure-cap: calc((100svh - var(--hero-reserve)) / var(--visible-ratio));
+    --figure-w: min(clamp(300px, 44vw, 620px), var(--figure-cap));
 
     position: relative;
     display: block;
@@ -761,7 +756,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 
     max-width: 1240px;
     margin: 0 auto;
-    padding: clamp(30px, 4vw, 52px) 40px 0;
+    padding: clamp(20px, 3vh, 32px) 40px 16px;
 }
 
 .hero-stats {
@@ -1583,6 +1578,14 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
     .brand-text { display: flex; }
 }
 
+@media (min-width: 621px) and (max-height: 500px) {
+    .hero-line { font-size: min(13vw, 14svh); }
+}
+
+@media (min-width: 621px) and (max-width: 760px) {
+    .hero-stage { --hero-reserve: 320px; }
+}
+
 @media (max-width: 620px) {
     /* phone bar: tile, theme switch and menu button only */
     .brand-text { display: none; }
@@ -1599,7 +1602,10 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
         padding-inline: 18px;
         margin-bottom: 14px;
     }
-    .hero-row { flex-direction: column; gap: 28px; }
+    .hero-row { flex-direction: column; gap: 20px; padding-inline: 18px; }
+    .hero-stats { gap: 18px; }
+    .hero-stats .stat { padding-left: 12px; }
+    .hero-stats .stat p { font-size: 12px; }
 
     .about { flex-direction: column; }
     .about-media { width: min(300px, 82%); }
