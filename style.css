@@ -558,7 +558,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 @keyframes blink { 50% { opacity: 0; } }
 
 
-/* --- stage: backdrop type behind, portrait in front --- */
+/* --- stage: roles on either side of the centered portrait --- */
 
 .hero-stage {
     /* Reserve room for the navbar and top padding. The controls now sit
@@ -574,8 +574,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 
     position: relative;
     display: block;
-    width: max-content;
-    max-width: 100%;
+    width: min(100%, 1360px);
     margin: 0 auto;
 }
 
@@ -589,6 +588,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     height: calc(var(--figure-w) * var(--photo-ratio) *
                  (var(--crop-bottom) - var(--crop-top)));
     overflow: hidden;
+    margin-inline: auto;
     margin-bottom: -1px;
 }
 
@@ -608,7 +608,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     z-index: 1;
     left: 50%;
     bottom: -4px;
-    width: 64%;
+    width: calc(var(--figure-w) * .64);
     height: 26px;
     transform: translateX(-50%);
     border-radius: 50%;
@@ -616,39 +616,43 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     filter: blur(7px);
 }
 
-/* the two roles, set large and sitting behind the figure */
+/* The center column reserves the portrait's full width for clear role labels. */
 .hero-backdrop {
     position: absolute;
     z-index: 1;
-    left: 50%;
-    bottom: 30%;
-    transform: translateX(-50%);
+    inset: 42% 0 auto;
+    transform: translateY(-50%);
 
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--figure-w) minmax(0, 1fr);
+    column-gap: clamp(12px, 2vw, 32px);
+    align-items: center;
 
-    width: min(92vw, 1180px);
     pointer-events: none;
 }
 
 .hero-line {
     display: block;
     font-family: var(--font-display);
-    font-size: clamp(34px, 13vw, 158px);
+    grid-row: 1;
+    font-size: clamp(22px, 3.6vw, 56px);
     font-weight: 800;
-    line-height: .92;
+    line-height: 1.08;
     letter-spacing: -0.045em;
     text-transform: uppercase;
     white-space: nowrap;
-    color: var(--big-name);
+    color: var(--muted);
 }
 
-.hero-line:last-child {
+.hero-line--ux {
+    grid-column: 1;
+    text-align: left;
     color: transparent;
-    -webkit-text-stroke: 1.5px var(--big-name);
-    opacity: .75;
+    -webkit-text-stroke: 1px var(--muted);
 }
+
+.hero-line--ai { grid-column: 3; text-align: right; }
+.hero-word { display: block; }
 
 /* per-letter entrance */
 .hero-line .ltr {
@@ -1441,13 +1445,9 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
     .theme-label { display: block; font-size: 14px; font-weight: 500; color: var(--muted); }
 }
 
-@media (min-width: 621px) and (max-height: 500px) {
-    .hero-line { font-size: min(13vw, 14svh); }
-}
-
-@media (max-width: 1200px) {
+@media (max-width: 1200px), (max-height: 600px) {
     .hero-stage { --hero-reserve: 180px; }
-    /* Give the caption its own space when the portrait's side margins narrow. */
+    /* Give the caption its own space on narrow or short screens. */
     .typed-wrap {
         position: relative;
         left: auto;
@@ -1479,8 +1479,17 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
 
     .cards-2, .cards-3, .cards-4 { grid-template-columns: 1fr; }
 
-    .hero-stage { --hero-reserve: 220px; --figure-w: min(clamp(230px, 74vw, 400px), var(--figure-cap)); }
-    .hero-backdrop { bottom: 30%; }
+    .hero-stage { --hero-reserve: 280px; --figure-w: min(clamp(230px, 74vw, 400px), var(--figure-cap)); }
+    /* Keep the roles left and right above the portrait on narrow screens. */
+    .hero-backdrop {
+        position: relative;
+        inset: auto;
+        transform: none;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-bottom: 14px;
+    }
+    .hero-line { font-size: clamp(22px, 5.5vw, 34px); }
+    .hero-line--ai { grid-column: 2; }
 
     .about { flex-direction: column; }
     .about-media { width: min(300px, 82%); }
@@ -1501,7 +1510,15 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
 
 @media (max-width: 620px) and (max-height: 400px) and (min-aspect-ratio: 4/3) {
     .hero-stage { --hero-reserve: 160px; }
-    .hero-line { font-size: 12svh; }
+    .hero-backdrop {
+        position: absolute;
+        inset: 30% 0 auto;
+        transform: translateY(-50%);
+        grid-template-columns: minmax(0, 1fr) var(--figure-w) minmax(0, 1fr);
+        margin-bottom: 0;
+    }
+    .hero-line { font-size: clamp(22px, 4vw, 26px); }
+    .hero-line--ai { grid-column: 3; }
     .hero-band::after { display: none; }
 }
 
