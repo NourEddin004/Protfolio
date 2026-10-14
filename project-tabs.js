@@ -17,6 +17,7 @@
         });
         var activeTab = tabs[index];
         var category = activeTab.dataset.category;
+        results.classList.toggle("project-results--all", category === "all");
         panels.forEach(function (panel) {
             panel.hidden = category !== "all" && panel.id !== "project-panel-" + category;
         });

@@ -1194,11 +1194,22 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 
 /* auto-fill keeps the cards at a readable size and lets the row count follow
    the width, rather than stretching three cards across a wide screen */
-.proj-grid {
+.proj-grid,
+.project-results--all {
     display: grid;
     gap: var(--grid-gap);
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
 }
+
+/* All projects share one grid; category wrappers do not create separate rows. */
+.project-results--all { padding-top: var(--space-8); }
+.project-results--all .besign-awarded { margin-top: 0; }
+.project-results--all > .project-panel:not([hidden]),
+.project-results--all > .project-panel > .proj-grid {
+    display: contents;
+}
+
+.project-results--all > .project-panel > .subsection-title { display: none; }
 
 
 .project-badge {
