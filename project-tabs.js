@@ -6,18 +6,22 @@
 
     var tablist = projects.querySelector(".project-tabs");
     var tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
-    var panels = tabs.map(function (tab) {
-        return document.getElementById(tab.getAttribute("aria-controls"));
-    });
+    var results = projects.querySelector("#project-results");
+    var panels = Array.from(results.querySelectorAll(".project-panel"));
 
     function selectTab(index, moveFocus) {
         tabs.forEach(function (tab, i) {
             var selected = i === index;
             tab.setAttribute("aria-selected", selected ? "true" : "false");
             tab.tabIndex = selected ? 0 : -1;
-            panels[i].hidden = !selected;
         });
-        if (moveFocus) tabs[index].focus();
+        var activeTab = tabs[index];
+        var category = activeTab.dataset.category;
+        panels.forEach(function (panel) {
+            panel.hidden = category !== "all" && panel.id !== "project-panel-" + category;
+        });
+        results.setAttribute("aria-labelledby", activeTab.id);
+        if (moveFocus) activeTab.focus();
     }
 
     tabs.forEach(function (tab, index) {
@@ -36,7 +40,9 @@
 
     // Keep existing links to a project category working.
     function selectFromHash() {
-        var index = ["#apps", "#web", "#figma"].indexOf(window.location.hash);
+        var category = window.location.hash.slice(1);
+        if (category === "projects") category = "all";
+        var index = tabs.findIndex(function (tab) { return tab.dataset.category === category; });
         if (index === -1) return;
         selectTab(index, false);
         requestAnimationFrame(function () { projects.scrollIntoView({ block: "start" }); });
