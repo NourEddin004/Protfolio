@@ -716,7 +716,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 }
 
 
-/* --- call to action + stats, anchored inside the portrait band --- */
+/* --- call to action, anchored inside the portrait band --- */
 
 .hero-row {
     position: absolute;
@@ -732,40 +732,6 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 }
 
 .hero-row > * { pointer-events: auto; }
-
-.hero-stats {
-    display: flex;
-    gap: 16px;
-}
-
-.hero-stats .stat { padding-left: 12px; }
-.hero-stats .stat p { font-size: 12px; }
-
-.stat {
-    position: relative;
-    padding: 4px 0 4px 20px;
-    text-align: left;
-}
-
-.stat::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 4px; bottom: 4px;
-    width: 1px;
-    background: var(--border-strong);
-}
-
-.stat h3 {
-    font-size: clamp(24px, 3.2vw, 34px);
-    line-height: 1.15;
-}
-
-.stat p {
-    color: var(--muted);
-    font-size: 13.5px;
-    letter-spacing: .3px;
-}
-
 
 /* ---------- 9. Marquee ---------- */
 
@@ -869,6 +835,8 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     animation: floatY 6.5s var(--ease-soft) .6s infinite alternate-reverse;
 }
 
+.about-text { min-width: 0; }
+
 .about-text h2 {
     font-size: clamp(28px, 4vw, 44px);
     margin-bottom: 18px;
@@ -879,6 +847,31 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     color: var(--muted);
     margin-bottom: 22px;
     max-width: 60ch;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(12px, 2vw, 24px);
+    margin: 28px 0;
+}
+
+.about-stats .stat {
+    padding: 4px 0 4px clamp(10px, 1.5vw, 20px);
+    border-left: 1px solid var(--border-strong);
+    text-align: left;
+}
+
+.about-stats .stat h3 {
+    font-size: clamp(26px, 3.2vw, 34px);
+    line-height: 1.15;
+    margin-bottom: 6px;
+}
+
+.about-stats .stat p {
+    margin: 0;
+    font-size: clamp(12px, 1.2vw, 13.5px);
+    line-height: 1.45;
 }
 
 .chips {
@@ -1577,10 +1570,6 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
         margin: 0 0 14px;
         text-align: left;
     }
-    .hero-stats { flex-direction: column; gap: 8px; }
-    .hero-stats .stat { display: flex; align-items: baseline; gap: 10px; padding-block: 0; }
-    .hero-stats .stat h3 { min-width: 2ch; font-size: 26px; }
-    .hero-stats .stat p { white-space: nowrap; }
 }
 
 @media (max-width: 760px) {
@@ -1596,9 +1585,6 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
     }
     .hero-row { gap: 16px; }
     .hero-row .button { padding: 11px 18px; font-size: 13px; }
-    .hero-stats .stat { gap: 8px; padding-left: 10px; }
-    .hero-stats .stat h3 { font-size: 24px; }
-    .hero-stats .stat p { font-size: 11px; }
 }
 
 @media (max-width: 620px) {
