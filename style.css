@@ -635,7 +635,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     display: block;
     font-family: var(--font-display);
     grid-row: 1;
-    font-size: clamp(22px, 3.6vw, 56px);
+    font-size: clamp(22px, calc(5.8vw - 15px), 66px);
     font-weight: 800;
     line-height: 1.08;
     letter-spacing: -0.045em;
@@ -1488,7 +1488,7 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
         grid-template-columns: repeat(2, minmax(0, 1fr));
         margin-bottom: 14px;
     }
-    .hero-line { font-size: clamp(22px, 5.5vw, 34px); }
+    .hero-line { font-size: clamp(25px, 7.4vw, 44px); }
     .hero-line--ai { grid-column: 2; }
 
     .about { flex-direction: column; }
@@ -1517,7 +1517,7 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
         grid-template-columns: minmax(0, 1fr) var(--figure-w) minmax(0, 1fr);
         margin-bottom: 0;
     }
-    .hero-line { font-size: clamp(22px, 4vw, 26px); }
+    .hero-line { font-size: clamp(22px, calc(7.8vw - 18px), 32px); }
     .hero-line--ai { grid-column: 3; }
     .hero-band::after { display: none; }
 }
