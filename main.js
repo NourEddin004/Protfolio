@@ -235,45 +235,6 @@
     });
 
 
-    /* ---------- 10. Hero: typewriter ---------- */
-
-    var typed = document.querySelector("[data-typed]");
-
-    if (typed) {
-        var words;
-        try {
-            words = JSON.parse(typed.dataset.typed);
-        } catch (e) {
-            words = [typed.dataset.typed];
-        }
-
-        if (reduceMotion) {
-            typed.textContent = words[0];
-        } else {
-            var wi = 0, ci = 0, deleting = false;
-
-            (function type() {
-                var word = words[wi];
-                ci += deleting ? -1 : 1;
-                typed.textContent = word.slice(0, ci);
-
-                var wait = deleting ? 45 : 85;
-
-                if (!deleting && ci === word.length) {
-                    deleting = true;
-                    wait = 1900;
-                } else if (deleting && ci === 0) {
-                    deleting = false;
-                    wi = (wi + 1) % words.length;
-                    wait = 380;
-                }
-
-                setTimeout(type, wait);
-            })();
-        }
-    }
-
-
     /* ---------- 11. Optional artwork ---------- */
 
     // A card may name an export that has not been added yet. The image starts
