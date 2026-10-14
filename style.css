@@ -11,6 +11,8 @@
     --bg-tint:       #e2ebe8;
     --surface:       #ffffff;
     --surface-2:     #f6f9f8;
+    --section-bg:    #f7faf9;
+    --section-alt:   #eaf2ef;
     --slate:         #16262c;
     --slate-text:    #b9cbcd;
 
@@ -53,6 +55,13 @@
     --radius:    20px;
     --radius-lg: 28px;
 
+    /* shared section layout */
+    --content-width: 1160px;
+    --section-space: clamp(56px, 6vw, 88px);
+    --section-gutter: clamp(18px, 3vw, 40px);
+    --section-heading-gap: clamp(24px, 3vw, 36px);
+    --nav-offset: 82px;
+
     --grad:      linear-gradient(120deg, var(--accent) 0%, #17a89a 45%, var(--accent-2) 100%);
     --grad-soft: linear-gradient(120deg, rgba(14,143,128,.14), rgba(85,102,230,.14));
 
@@ -64,6 +73,8 @@ html[data-theme="dark"] {
     --bg-tint:       #0c161a;
     --surface:       #101b20;
     --surface-2:     #15232a;
+    --section-bg:    #0c161a;
+    --section-alt:   #122127;
     --slate:         #142127;
     --slate-text:    #9fb4b8;
 
@@ -241,12 +252,36 @@ section {
     scroll-margin-top: 120px;
 }
 
+/* Full-width section bands share one content column and spacing scale. */
+.page.page--sections {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+.page--sections > section,
+.page--sections > .footer {
+    margin: 0;
+    padding-block: var(--section-space);
+    padding-inline: max(var(--section-gutter), calc((100% - var(--content-width)) / 2));
+    scroll-margin-top: var(--nav-offset);
+}
+
+.page--sections > section {
+    background-color: var(--section-bg);
+    border-top: 1px solid var(--border);
+}
+
+.page--sections > section:nth-of-type(even) { background-color: var(--section-alt); }
+.page--sections > section:first-child { border-top: 0; }
+.page--sections > .footer { border-radius: 0; }
+
 .section-head {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     gap: 30px;
-    margin-bottom: 42px;
+    margin-bottom: var(--section-heading-gap);
 }
 
 .section-head h2 {
@@ -1505,6 +1540,7 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
 }
 
 @media (max-width: 1200px) {
+    :root { --nav-offset: 64px; }
     .nav-inner { padding: 12px 18px; }
 
     .nav-links {
