@@ -866,10 +866,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--border);
-    transition: transform .6s var(--ease);
 }
-
-.about-media:hover .about-photo { transform: translateY(-8px) rotate(-1.5deg); }
 
 /* floating badge over the photo */
 .float-badge {
