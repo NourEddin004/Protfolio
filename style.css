@@ -1575,7 +1575,8 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
     .nav-links a::after { display: none; }
 
     .nav-toggle { display: grid; }
-    .nav-right .button { display: none; }
+    .nav-right .button:not(.nav-cv) { display: none; }
+    .nav-cv { padding: 10px; font-size: 12px; }
 
     /* links are behind the menu button now, so the name has room again */
     .brand-text { display: flex; }
@@ -1621,8 +1622,10 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
 }
 
 @media (max-width: 620px) {
-    /* phone bar: tile, theme switch and menu button only */
+    /* Keep the CV download visible beside the theme and menu controls. */
     .brand-text { display: none; }
+    .nav-inner { padding-inline: 12px; gap: 8px; }
+    .nav-right { gap: 6px; }
 
     .cards-2, .cards-3, .cards-4 { grid-template-columns: 1fr; }
 
