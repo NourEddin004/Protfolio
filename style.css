@@ -34,6 +34,7 @@
 
     /* the hero sits on its own band, distinct from the page below it */
     --hero-band:     linear-gradient(180deg, #ffffff 0%, #edf7f4 52%, #cde5de 100%);
+    --hero-floor:    #cde5de;
     --hero-edge:     #a5c7bf;
     --hero-shadow:   rgba(16, 46, 44, .30);
 
@@ -82,6 +83,7 @@ html[data-theme="dark"] {
     --chip-bg:       rgba(255, 255, 255, 0.92);
 
     --hero-band:     linear-gradient(180deg, #1b2f38 0%, #16272e 52%, #102026 100%);
+    --hero-floor:    #102026;
     --hero-edge:     #35505c;
     --hero-shadow:   rgba(0, 0, 0, .55);
 
@@ -599,23 +601,22 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     overflow: hidden;
 }
 
-/* typed line, pinned to the bottom-left corner of the band */
+/* Typed line sits above the call to action inside the portrait band. */
 .typed-wrap {
     position: absolute;
-    z-index: 3;
-    left: 0;
-    right: 0;
-    bottom: clamp(16px, 2.4vw, 32px);
+    z-index: 4;
+    left: clamp(18px, 3vw, 40px);
+    bottom: 102px;
 
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 40px;
+    width: min(24vw, 340px);
+    margin: 0;
 
     min-height: 1.6em;
     font-size: clamp(16px, 2.1vw, 21px);
     line-height: 1.4;
     color: var(--muted);
     text-align: left;
+    text-wrap: balance;
 }
 
 .typed { color: var(--ink); font-weight: 600; }
@@ -636,14 +637,13 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 /* --- stage: backdrop type behind, portrait in front --- */
 
 .hero-stage {
-    /* Reserve room for the navbar, caption, button and stats. Derive the
-       portrait cap from its current crop so image updates cannot push the
-       controls below the initial viewport. */
+    /* Reserve room for the navbar and top padding. The controls now sit
+       inside the portrait band, so they need no separate row below it. */
     --photo-ratio: 1.4;      /* 1484 / 1060, enhanced portrait proportions */
     --crop-top: 0.06;
     --crop-bottom: 0.82;
     --visible-ratio: calc(var(--photo-ratio) * (var(--crop-bottom) - var(--crop-top)));
-    --hero-reserve: 250px;
+    --hero-reserve: 130px;
     --figure-cap: calc((100vh - var(--hero-reserve)) / var(--visible-ratio));
     --figure-cap: calc((100svh - var(--hero-reserve)) / var(--visible-ratio));
     --figure-w: min(clamp(300px, 44vw, 620px), var(--figure-cap));
@@ -697,7 +697,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     position: absolute;
     z-index: 1;
     left: 50%;
-    bottom: 26%;
+    bottom: 30%;
     transform: translateX(-50%);
 
     display: flex;
@@ -745,24 +745,30 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 }
 
 
-/* --- call to action + stats, below the divider --- */
+/* --- call to action + stats, anchored inside the portrait band --- */
 
 .hero-row {
+    position: absolute;
+    z-index: 4;
+    left: clamp(18px, 3vw, 40px);
+    right: clamp(18px, 3vw, 40px);
+    bottom: clamp(18px, 2.4vw, 32px);
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: clamp(24px, 5vw, 60px);
-    flex-wrap: wrap;
-
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: clamp(20px, 3vh, 32px) 40px 16px;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    pointer-events: none;
 }
+
+.hero-row > * { pointer-events: auto; }
 
 .hero-stats {
     display: flex;
-    gap: clamp(18px, 4vw, 40px);
+    gap: 16px;
 }
+
+.hero-stats .stat { padding-left: 12px; }
+.hero-stats .stat p { font-size: 12px; }
 
 .stat {
     position: relative;
@@ -1582,8 +1588,39 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
     .hero-line { font-size: min(13vw, 14svh); }
 }
 
-@media (min-width: 621px) and (max-width: 760px) {
-    .hero-stage { --hero-reserve: 320px; }
+@media (max-width: 1200px) {
+    .hero-stage { --hero-reserve: 180px; }
+    /* Give the caption its own space when the portrait's side margins narrow. */
+    .typed-wrap {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        width: auto;
+        margin: 0 0 14px;
+        text-align: left;
+    }
+    .hero-stats { flex-direction: column; gap: 8px; }
+    .hero-stats .stat { display: flex; align-items: baseline; gap: 10px; padding-block: 0; }
+    .hero-stats .stat h3 { min-width: 2ch; font-size: 26px; }
+    .hero-stats .stat p { white-space: nowrap; }
+}
+
+@media (max-width: 760px) {
+    /* A soft fade keeps the corner controls readable over the lower suit. */
+    .hero-band::after {
+        content: "";
+        position: absolute;
+        z-index: 3;
+        inset: auto 0 0;
+        height: 180px;
+        background: linear-gradient(0deg, var(--hero-floor), color-mix(in srgb, var(--hero-floor) 94%, transparent) 35%, transparent);
+        pointer-events: none;
+    }
+    .hero-row { gap: 16px; }
+    .hero-row .button { padding: 11px 18px; font-size: 13px; }
+    .hero-stats .stat { gap: 8px; padding-left: 10px; }
+    .hero-stats .stat h3 { font-size: 24px; }
+    .hero-stats .stat p { font-size: 11px; }
 }
 
 @media (max-width: 620px) {
@@ -1592,20 +1629,8 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
 
     .cards-2, .cards-3, .cards-4 { grid-template-columns: 1fr; }
 
-    .hero-stage { --hero-reserve: 320px; --figure-w: min(clamp(230px, 74vw, 400px), var(--figure-cap)); }
+    .hero-stage { --hero-reserve: 220px; --figure-w: min(clamp(230px, 74vw, 400px), var(--figure-cap)); }
     .hero-backdrop { bottom: 30%; }
-    /* at phone width the portrait fills the lower-left corner, so the caption
-       would sit unreadably on the dark suit: keep it left-aligned, but above */
-    .typed-wrap {
-        position: static;
-        bottom: auto;
-        padding-inline: 18px;
-        margin-bottom: 14px;
-    }
-    .hero-row { flex-direction: column; gap: 20px; padding-inline: 18px; }
-    .hero-stats { gap: 18px; }
-    .hero-stats .stat { padding-left: 12px; }
-    .hero-stats .stat p { font-size: 12px; }
 
     .about { flex-direction: column; }
     .about-media { width: min(300px, 82%); }
@@ -1621,6 +1646,13 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
     .contact-value { font-size: 13px; word-break: break-word; }
 
     .to-top { right: 16px; bottom: 16px; }
+}
+
+
+@media (max-width: 620px) and (max-height: 400px) and (min-aspect-ratio: 4/3) {
+    .hero-stage { --hero-reserve: 160px; }
+    .hero-line { font-size: 12svh; }
+    .hero-band::after { display: none; }
 }
 
 
