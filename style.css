@@ -58,6 +58,7 @@
     --text-hero: clamp(1.375rem, calc(5.8vw - .9375rem), 4.125rem);
     --text-hero-mobile: clamp(1.5625rem, 7.4vw, 2.75rem);
     --text-hero-landscape: clamp(1.375rem, calc(7.8vw - 1.125rem), 2rem);
+    --text-hero-fit: 16.8cqi; /* Fits the longest role line within its column. */
     --leading-body: 1.6;
     --leading-small: 1.5;
     --leading-card: 1.3;
@@ -648,18 +649,18 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 
 .hero-line {
     display: block;
+    container-type: inline-size;
     font-family: var(--font-display);
     grid-row: 1;
     font-size: var(--text-hero);
     font-weight: var(--weight-display);
     line-height: var(--leading-hero);
-    letter-spacing: var(--tracking-hero);
     text-transform: uppercase;
     white-space: nowrap;
     color: var(--muted);
 }
 
-.hero-line--ux {
+.hero-line--full-stack {
     grid-column: 1;
     text-align: left;
     color: transparent;
@@ -667,7 +668,11 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 }
 
 .hero-line--ai { grid-column: 3; text-align: right; }
-.hero-word { display: block; }
+.hero-word {
+    display: block;
+    font-size: min(1em, var(--text-hero-fit));
+    letter-spacing: var(--tracking-hero);
+}
 
 /* per-letter entrance */
 .hero-line .ltr {
