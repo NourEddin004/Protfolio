@@ -26,8 +26,8 @@
     --accent-2:      #5566e6;
     --accent-3:      #e0a42a;
     --accent-ink:    #ffffff;
+    --button-bg:     #0b7c6f;
     --accent-soft:   #d7ece8;
-    --accent-glow:   rgba(14, 143, 128, 0.28);
 
     /* lines + depth */
     --border:        #d9e4e2;
@@ -86,8 +86,8 @@ html[data-theme="dark"] {
     --accent-2:      #8b9cff;
     --accent-3:      #f3c366;
     --accent-ink:    #04211d;
+    --button-bg:     #2fd4bd;
     --accent-soft:   #123330;
-    --accent-glow:   rgba(47, 212, 189, 0.30);
 
     --border:        #22323a;
     --border-strong: #2f434c;
@@ -181,64 +181,6 @@ button:focus-visible,
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 
-/* ---------- 3. Ambient background ---------- */
-
-.aurora {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.aurora span {
-    position: absolute;
-    display: block;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: .24;
-    will-change: transform;
-}
-
-.aurora .a1 {
-    width: 46vw; height: 46vw;
-    top: -14vw; left: -10vw;
-    background: var(--accent);
-    animation: drift1 26s var(--ease-soft) infinite alternate;
-}
-
-.aurora .a2 {
-    width: 38vw; height: 38vw;
-    top: 34vh; right: -12vw;
-    background: var(--accent-2);
-    opacity: .18;
-    animation: drift2 32s var(--ease-soft) infinite alternate;
-}
-
-.aurora .a3 {
-    width: 32vw; height: 32vw;
-    bottom: -12vw; left: 32vw;
-    background: var(--accent-3);
-    opacity: .13;
-    animation: drift3 38s var(--ease-soft) infinite alternate;
-}
-
-html[data-theme="dark"] .aurora span { opacity: .20; }
-html[data-theme="dark"] .aurora .a3  { opacity: .10; }
-
-@keyframes drift1 {
-    from { transform: translate3d(0,0,0) scale(1); }
-    to   { transform: translate3d(12vw, 10vh, 0) scale(1.25); }
-}
-@keyframes drift2 {
-    from { transform: translate3d(0,0,0) scale(1.1); }
-    to   { transform: translate3d(-14vw, -8vh, 0) scale(.9); }
-}
-@keyframes drift3 {
-    from { transform: translate3d(0,0,0) scale(.9); }
-    to   { transform: translate3d(8vw, -12vh, 0) scale(1.2); }
-}
-
 /* ---------- 4. Layout ---------- */
 
 .page {
@@ -301,14 +243,7 @@ section {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: gradShift 8s ease-in-out infinite;
 }
-
-@keyframes gradShift {
-    0%, 100% { background-position: 0% 50%; }
-    50%      { background-position: 100% 50%; }
-}
-
 
 /* ---------- 5. Buttons ---------- */
 
@@ -336,32 +271,16 @@ section {
                 border-color .3s var(--ease-soft);
 }
 
-/* shine sweep */
-.button::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,.42) 50%, transparent 80%);
-    transform: translateX(-130%);
-    transition: transform .8s var(--ease);
-}
-
-.button:hover::after { transform: translateX(130%); }
-
 .button:hover  { transform: translateY(-3px); }
 .button:active { transform: translateY(-1px) scale(.98); }
 
 .button.primary {
-    background: var(--grad);
-    background-size: 180% 180%;
-    color: #fff;
-    box-shadow: 0 10px 26px -8px var(--accent-glow);
-    animation: gradShift 9s ease-in-out infinite;
+    background: var(--button-bg);
+    color: var(--accent-ink);
 }
 
 .button.primary:hover {
-    box-shadow: 0 18px 38px -10px var(--accent-glow);
+    background-color: color-mix(in srgb, var(--button-bg) 88%, var(--ink));
 }
 
 .button.ghost {
@@ -374,7 +293,6 @@ section {
 .button.ghost:hover {
     border-color: var(--accent);
     color: var(--accent);
-    box-shadow: 0 12px 28px -12px var(--accent-glow);
 }
 
 .button .arrow {
@@ -932,7 +850,6 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     transform: translateY(-3px);
     color: var(--accent);
     border-color: var(--accent);
-    box-shadow: 0 10px 22px -12px var(--accent-glow);
 }
 
 .about-actions {
@@ -971,35 +888,10 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
                 border-color .4s var(--ease-soft);
 }
 
-/* gradient sheen that sweeps in on hover */
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: var(--grad);
-    opacity: 0;
-    transition: opacity .5s var(--ease-soft);
-}
-
-/* cursor spotlight (fed by JS custom props) */
-.card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%),
-                rgba(255,255,255,.10), transparent 62%);
-    opacity: 0;
-    transition: opacity .35s var(--ease-soft);
-}
-
 .card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
 }
-
-.card:hover::after { opacity: 1; }
 
 /* on dark, the slate cards sit close to the page colour: give them an edge */
 html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
@@ -1009,12 +901,6 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
     color: var(--ink);
     border-color: var(--border);
     box-shadow: var(--shadow-sm);
-}
-
-.card.light::after {
-    background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%),
-                var(--accent-glow), transparent 62%);
-    opacity: 0;
 }
 
 .card.light:hover {
@@ -1165,7 +1051,6 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
 
 .card li:hover .ic {
     transform: rotate(-10deg) scale(1.12);
-    box-shadow: 0 8px 18px -8px var(--accent-glow);
 }
 
 .ic img { width: 19px; height: 19px; }
@@ -1238,7 +1123,6 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
     background: var(--grad);
     background-size: 200% 100%;
     transition: width 1.4s var(--ease);
-    animation: gradShift 6s ease-in-out infinite;
 }
 
 
@@ -1320,7 +1204,6 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
     transform: translateY(-3px);
     border-color: var(--accent);
     color: var(--accent);
-    box-shadow: 0 12px 26px -14px var(--accent-glow);
 }
 
 .pagination a.active {
@@ -1340,19 +1223,6 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
     overflow: hidden;
     scroll-margin-top: 120px;
     isolation: isolate;
-}
-
-.footer::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    width: 52%;
-    aspect-ratio: 1;
-    top: -30%;
-    right: -12%;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--accent-glow), transparent 65%);
-    animation: floatY 9s var(--ease-soft) infinite alternate;
 }
 
 .footer-top {
@@ -1400,22 +1270,11 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
                 background-color .3s var(--ease-soft);
 }
 
-.contact-item::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--grad);
-    opacity: 0;
-    transition: opacity .4s var(--ease-soft);
-    z-index: -1;
-}
-
 .contact-item:hover {
     transform: translateX(8px);
-    border-color: transparent;
+    background-color: rgba(255,255,255,.10);
+    border-color: rgba(255,255,255,.25);
 }
-
-.contact-item:hover::before { opacity: 1; }
 
 .contact-icon {
     display: grid;
@@ -1477,18 +1336,15 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
     place-items: center;
     border-radius: 15px;
 
-    background: var(--grad);
-    background-size: 180% 180%;
-    color: #fff;
+    background: var(--button-bg);
+    color: var(--accent-ink);
     border: none;
     cursor: pointer;
 
-    box-shadow: 0 14px 30px -12px var(--accent-glow);
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px) scale(.8);
     transition: opacity .4s var(--ease), transform .4s var(--ease), visibility .4s;
-    animation: gradShift 9s ease-in-out infinite;
 }
 
 .to-top.show {
