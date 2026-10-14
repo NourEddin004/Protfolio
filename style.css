@@ -1701,12 +1701,49 @@ html[data-theme="dark"] .card:not(.light) { border-color: var(--border); }
 .section-head + .subsection-title,
 .subsection-title:first-of-type { margin-top: 1.5rem; }
 
+/* Project categories */
+.project-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: fit-content;
+    max-width: 100%;
+    margin-bottom: 28px;
+    padding: 6px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface-2);
+}
+
+.project-tab {
+    padding: 11px 22px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--muted);
+    font: 600 14px/1.4 var(--font-body);
+    cursor: pointer;
+    transition: background-color .2s var(--ease-soft), color .2s var(--ease-soft);
+}
+
+.project-tab:hover { color: var(--ink); background: var(--accent-soft); }
+.project-tab[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); }
+.project-tabs[hidden], .project-panel[hidden] { display: none; }
+.project-panel > .subsection-title { margin-top: 0; margin-bottom: 20px; }
+.project-panel + .project-panel { margin-top: 40px; }
+.project-panel[hidden] + .project-panel { margin-top: 0; }
+
+@media (max-width: 620px) {
+    .project-tabs { width: 100%; }
+    .project-tab { flex: 1 1 auto; padding: 10px 8px; font-size: 12px; }
+}
+
 /* auto-fill keeps the cards at a readable size and lets the row count follow
    the width, rather than stretching three cards across a wide screen */
 .proj-grid {
     display: grid;
     gap: 1.25rem;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
 }
 
 

@@ -25,7 +25,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap">
 
-    <link rel="stylesheet" href="style.css?v=44">
+    <link rel="stylesheet" href="style.css?v=45">
 </head>
 
 <body>
@@ -292,6 +292,13 @@
                 </div>
             </div>
 
+            <div class="project-tabs" role="tablist" aria-label="Project categories" hidden>
+                <button type="button" class="project-tab" id="project-tab-apps" role="tab" aria-controls="project-panel-apps" aria-selected="true" tabindex="0">Mobile Apps</button>
+                <button type="button" class="project-tab" id="project-tab-web" role="tab" aria-controls="project-panel-web" aria-selected="false" tabindex="-1">Web</button>
+                <button type="button" class="project-tab" id="project-tab-figma" role="tab" aria-controls="project-panel-figma" aria-selected="false" tabindex="-1">Figma Projects</button>
+            </div>
+
+            <div class="project-panel" id="project-panel-apps" role="tabpanel" aria-labelledby="project-tab-apps" tabindex="0">
             <h3 class="subsection-title reveal" id="apps">Mobile App Projects</h3>
 
             <div class="proj-grid">
@@ -329,7 +336,9 @@
         </article>
 
             </div>
+            </div>
 
+            <div class="project-panel" id="project-panel-web" role="tabpanel" aria-labelledby="project-tab-web" tabindex="0">
             <h3 class="subsection-title reveal" id="web">Web Projects</h3>
 
             <div class="proj-grid">
@@ -456,7 +465,9 @@
         </article>
 
             </div>
+            </div>
 
+            <div class="project-panel" id="project-panel-figma" role="tabpanel" aria-labelledby="project-tab-figma" tabindex="0">
             <h3 class="subsection-title reveal" id="figma">Figma Projects</h3>
 
             <div class="proj-grid">
@@ -590,6 +601,7 @@
           </div>
         </article>
 
+            </div>
             </div>
 
         </section>
@@ -763,6 +775,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
     </button>
 
+    <script src="project-tabs.js?v=1"></script>
     <script src="main.js?v=33"></script>
 
 </body>
