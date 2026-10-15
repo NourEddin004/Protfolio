@@ -25,7 +25,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap">
 
-    <link rel="stylesheet" href="style.css?v=58">
+    <link rel="stylesheet" href="style.css?v=59">
 </head>
 
 <body>
@@ -33,6 +33,8 @@
     <!-- ================= icon sprite ================= -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
         <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 5-6 7 6 7"/><path d="m16 5 6 7-6 7"/></symbol>
+        <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 8h18M9 8v13M13 12h4M13 16h4"/></symbol>
+        <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
         <symbol id="i-chip" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><rect x="9" y="9" width="6" height="6" rx="1.4"/><path d="M9 1.5V4M15 1.5V4M9 20v2.5M15 20v2.5M1.5 9H4M1.5 15H4M20 9h2.5M20 15h2.5"/></symbol>
         <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2.1-.9 2.1-2 0-.5-.2-1-.6-1.4-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.1A5 5 0 0 0 21 12c0-5-4-9-9-9z"/><circle cx="8" cy="10" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16" cy="10.5" r="1.1"/></symbol>
         <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
@@ -124,17 +126,19 @@
                         </h2>
                         <div class="hero-capability-set">
                             <ul class="hero-capabilities" aria-label="Full Stack Developer capabilities">
-                                <li>Responsive websites</li>
-                                <li>E-commerce stores</li>
-                                <li>Backends &amp; databases</li>
+                                <li class="hero-capability" data-capability="uiux">
+                                    <span class="hero-capability-icon"><svg aria-hidden="true" focusable="false"><use href="#i-layout"/></svg></span>
+                                    <span>UI/UX</span>
+                                </li>
+                                <li class="hero-capability" data-capability="frontend">
+                                    <span class="hero-capability-icon"><svg aria-hidden="true" focusable="false"><use href="#i-code"/></svg></span>
+                                    <span>Frontend Developer</span>
+                                </li>
+                                <li class="hero-capability" data-capability="backend">
+                                    <span class="hero-capability-icon"><svg aria-hidden="true" focusable="false"><use href="#i-database"/></svg></span>
+                                    <span>Backend Developer</span>
+                                </li>
                             </ul>
-                            <div class="hero-design">
-                                <h3>UI/UX Design</h3>
-                                <ul class="hero-capabilities" aria-label="UI/UX Design capabilities">
-                                    <li>User interface design</li>
-                                    <li>Wireframes &amp; prototypes</li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
 
@@ -145,9 +149,18 @@
                         </h2>
                         <div class="hero-capability-set">
                             <ul class="hero-capabilities" aria-label="AI Engineer capabilities">
-                                <li>Machine learning models</li>
-                                <li>Computer vision</li>
-                                <li>Data analysis</li>
+                                <li class="hero-capability" data-capability="machine">
+                                    <span class="hero-capability-icon"><svg aria-hidden="true" focusable="false"><use href="#i-chip"/></svg></span>
+                                    <span>Machine learning models</span>
+                                </li>
+                                <li class="hero-capability" data-capability="vision">
+                                    <span class="hero-capability-icon"><svg aria-hidden="true" focusable="false"><use href="#i-eye"/></svg></span>
+                                    <span>Computer vision</span>
+                                </li>
+                                <li class="hero-capability" data-capability="data">
+                                    <span class="hero-capability-icon"><svg aria-hidden="true" focusable="false"><use href="#i-trend"/></svg></span>
+                                    <span>Data analysis</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -159,9 +172,19 @@
                 </div>
 
                 <div class="hero-hybrid">
-                    <p class="hero-hybrid-disciplines">Full Stack <span aria-hidden="true">+</span> UI/UX <span aria-hidden="true">+</span> AI</p>
-                    <h2>One hybrid skill set.</h2>
-                    <p>Designing the experience, building the application<br class="hero-hybrid-break"> and bringing intelligence into it.</p>
+                    <div class="hero-hybrid-intro">
+                        <p class="hero-hybrid-disciplines">Full Stack <span aria-hidden="true">+</span> UI/UX <span aria-hidden="true">+</span> AI</p>
+                        <h2>One hybrid skill set.</h2>
+                        <p>Designing the experience, building the application<br class="hero-hybrid-break"> and bringing intelligence into it.</p>
+                    </div>
+                    <div class="hero-merge-grid" aria-hidden="true">
+                        <div data-merge-target="uiux"></div>
+                        <div data-merge-target="machine"></div>
+                        <div data-merge-target="frontend"></div>
+                        <div data-merge-target="vision"></div>
+                        <div data-merge-target="backend"></div>
+                        <div data-merge-target="data"></div>
+                    </div>
                 </div>
 
             </div>
@@ -785,7 +808,7 @@
 
     <script src="project-tabs.js?v=3"></script>
     <script src="main.js?v=34"></script>
-    <script src="hero-motion.js?v=1"></script>
+    <script src="hero-motion.js?v=2"></script>
 
 </body>
 

@@ -522,8 +522,10 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 
 /* ---------- 8. Hero ---------- */
 
-/* The role, primary design discipline and capabilities stay together. */
+/* Source tiles and merge slots share dimensions so text never scales. */
 .hero {
+    --hero-capability-width: 20rem;
+    --hero-capability-height: var(--space-20);
     margin-bottom: 0;
     scroll-margin-top: 0;
 }
@@ -589,23 +591,48 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 
 .hero-capability-set {
     margin-top: var(--space-4);
-    transform: translate(var(--merge-x, 0px), var(--merge-y, 0px));
-    opacity: var(--merge-copy-opacity, 1);
 }
 .hero-capabilities {
     display: grid;
     gap: var(--space-2);
+    width: min(100%, var(--hero-capability-width));
     list-style: none;
     font-size: var(--text-card);
-    line-height: var(--leading-small);
-    color: var(--muted);
-}
-.hero-design { margin-top: var(--space-6); }
-.hero-design h3 {
-    margin-bottom: var(--space-3);
-    color: var(--ink);
-    font-size: var(--text-subheading);
     line-height: var(--leading-card);
+}
+.hero-role--ai .hero-capabilities { margin-left: auto; }
+.hero-capability {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    height: var(--hero-capability-height);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--ink);
+    font-weight: var(--weight-medium);
+    text-align: left;
+    transform: translate3d(var(--merge-card-x, 0px), var(--merge-card-y, 0px), 0);
+}
+.hero-capability-icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: var(--space-12);
+    height: var(--space-12);
+    border-radius: var(--radius-sm);
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+.hero-capability-icon svg {
+    width: var(--space-8);
+    height: var(--space-8);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .hero-figure {
@@ -646,25 +673,34 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     color: var(--accent);
 }
 .hero-hybrid h2 { font-size: var(--text-page); line-height: var(--leading-heading); }
-.hero-hybrid > p:last-child {
+.hero-hybrid-intro > p:last-child {
     margin-top: var(--space-5);
-    font-size: var(--text-card);
+    font-size: var(--text-body);
     line-height: var(--leading-small);
     color: var(--muted);
 }
+.hero-merge-grid { display: none; }
 .hero.is-merging .hero-band { position: sticky; top: var(--hero-sticky-top, var(--nav-offset)); }
 .hero.is-merging .hero-hybrid {
     position: absolute;
     z-index: 4;
-    inset: 0;
+    inset: var(--merge-overlay-top, 0px) 0 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-inline: var(--section-gutter);
-    opacity: var(--merge-message-opacity, 0);
-    transform: translateY(var(--merge-message-y, 0px));
+    align-items: center;
+    gap: var(--space-6);
+    padding: var(--space-6) var(--section-gutter) calc(var(--space-20) + var(--space-6));
     pointer-events: none;
 }
+.hero.is-merging .hero-hybrid-intro { opacity: var(--merge-message-opacity, 0); }
+.hero.is-merging .hero-merge-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2) var(--space-4);
+    width: min(100%, calc(2 * var(--hero-capability-width) + var(--space-4)));
+}
+.hero-merge-grid > div { height: var(--hero-capability-height); }
 
 /* Initial title entrance is separate from the scroll-driven transition. */
 .hero-line .ltr {
@@ -1042,38 +1078,47 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
         --figure-w: clamp(300px, 40vw, 440px);
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         align-content: start;
-        row-gap: var(--space-8);
+        row-gap: var(--space-6);
         padding-top: 0;
     }
+    .hero-role { grid-row: 2; }
     .hero-role--ai { grid-column: 2; }
     .hero-figure {
         position: relative;
         inset: auto;
         transform: none;
         grid-column: 1 / -1;
-        grid-row: 2;
+        grid-row: 1;
         justify-self: center;
     }
     .hero-cta { grid-row: 3; }
+    .hero-figure {
+        -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--space-14)), transparent);
+        mask-image: linear-gradient(to bottom, #000 calc(100% - var(--space-14)), transparent);
+    }
 }
 
 @media (max-width: 620px) {
     .nav-inner { padding-inline: var(--space-4); gap: var(--space-3); }
     .brand-name { font-size: var(--text-sm); }
 
-
+    .hero {
+        --hero-capability-width: max(calc(var(--space-20) + var(--space-14)), calc((100vw - 2 * var(--section-gutter) - var(--space-16)) / 2));
+    }
     .hero-stage {
         --figure-w: clamp(230px, 74vw, 400px);
-        grid-template-columns: minmax(0, 1fr);
     }
-    .hero-role--full-stack { grid-column: 1; grid-row: 1; }
-    .hero-role--ai { grid-column: 1; grid-row: 2; }
-    .hero-line { font-size: var(--text-hero-mobile); }
-    .hero-figure { grid-column: 1; grid-row: 3; }
-    .hero-cta { grid-column: 1; grid-row: 4; }
+    .hero-line { font-size: min(var(--text-hero-mobile), var(--text-hero-fit)); }
+    .hero-capability-set { margin-top: var(--space-3); }
+    .hero-capabilities { font-size: var(--text-body); }
+    .hero-capability { gap: var(--space-2); padding: var(--space-2); }
+    .hero-capability-icon { width: var(--space-6); height: var(--space-8); background: none; }
+    .hero-capability-icon svg { width: var(--space-6); height: var(--space-6); }
     .hero-hybrid-break { display: none; }
+    .hero-hybrid h2 { font-size: var(--text-stat); }
     .hero-hybrid-disciplines { font-size: var(--text-body); gap: var(--space-2); }
-    .hero-hybrid > p:last-child { font-size: var(--text-body); }
+    .hero.is-merging .hero-hybrid-disciplines { display: none; }
+    .hero.is-merging .hero-hybrid { gap: var(--space-4); }
 
     .about { flex-direction: column; }
     .about-media { width: min(300px, 82%); }
@@ -1085,6 +1130,38 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     .contact-value { font-size: var(--text-sm); word-break: break-word; }
 
     .to-top { right: var(--space-4); bottom: var(--space-4); }
+}
+
+/* Keep the complete merge in view on short phones and landscape screens. */
+@media (max-height: 700px) {
+    .hero.is-merging .hero-hybrid-disciplines { display: none; }
+    .hero.is-merging .hero-hybrid h2 { font-size: var(--text-stat); }
+    .hero.is-merging .hero-hybrid-intro > p:last-child { margin-top: var(--space-3); }
+}
+@media (max-height: 700px) and (max-width: 620px) {
+    .hero.is-merging .hero-hybrid-intro > p:last-child { display: none; }
+}
+@media (max-height: 560px) and (orientation: landscape) {
+    .hero { --hero-capability-height: var(--space-14); }
+    .hero-capabilities { font-size: var(--text-body); }
+    .hero-capability-icon { width: var(--space-8); height: var(--space-8); }
+    .hero-capability-icon svg { width: var(--space-6); height: var(--space-6); }
+    .hero.is-merging .hero-hybrid { gap: var(--space-3); padding-top: var(--space-2); padding-bottom: var(--space-20); }
+    .hero.is-merging .hero-hybrid h2 { font-size: var(--text-subheading); }
+    .hero.is-merging .hero-hybrid-intro > p:last-child { display: none; }
+}
+@media (max-height: 360px) and (orientation: landscape) {
+    .hero { --hero-capability-height: var(--control-compact); }
+    .hero-stage { padding-bottom: var(--space-3); }
+    .hero-capabilities { font-size: var(--text-sm); }
+    .hero-capability { padding: var(--space-2); }
+    .hero-capability-icon { width: var(--space-6); height: var(--space-6); }
+    .hero.is-merging .hero-hybrid { gap: var(--space-2); padding-top: var(--space-1); padding-bottom: var(--space-16); }
+    .hero.is-merging .hero-hybrid h2 { font-size: var(--text-card); }
+}
+@media (max-height: 560px) and (orientation: portrait) {
+    .hero.is-merging .hero-hybrid { padding-top: var(--space-3); padding-bottom: var(--space-20); }
+    .hero.is-merging .hero-hybrid h2 { font-size: var(--text-subheading); }
 }
 
 
