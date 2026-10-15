@@ -25,7 +25,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap">
 
-    <link rel="stylesheet" href="style.css?v=57">
+    <link rel="stylesheet" href="style.css?v=58">
 </head>
 
 <body>
@@ -115,37 +115,53 @@
             <div class="hero-band">
 
                 <div class="hero-stage">
+                    <h1 class="sr-only">NourEddin Abu-Salhieh &#8212; Full Stack Developer, UI/UX Designer and AI Engineer</h1>
 
-                    <h1 class="hero-backdrop">
-                        <span class="sr-only">NourEddin Abu-Salhieh &#8212; Full Stack Developer and AI Engineer</span>
-                        <span class="hero-line hero-line--full-stack" aria-hidden="true">
+                    <div class="hero-role hero-role--full-stack">
+                        <h2 class="hero-line hero-line--full-stack">
                             <span class="hero-word" data-split="0">Full Stack</span>
                             <span class="hero-word" data-split="10">Developer</span>
-                        </span>
-                        <span class="hero-line hero-line--ai" aria-hidden="true">
-                            <span class="hero-word" data-split="19">AI</span>
-                            <span class="hero-word" data-split="21">Engineer</span>
-                        </span>
-                    </h1>
+                        </h2>
+                        <div class="hero-capability-set">
+                            <ul class="hero-capabilities" aria-label="Full Stack Developer capabilities">
+                                <li>Responsive websites</li>
+                                <li>E-commerce stores</li>
+                                <li>Backends &amp; databases</li>
+                            </ul>
+                            <div class="hero-design">
+                                <h3>UI/UX Design</h3>
+                                <ul class="hero-capabilities" aria-label="UI/UX Design capabilities">
+                                    <li>User interface design</li>
+                                    <li>Wireframes &amp; prototypes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-role hero-role--ai">
+                        <h2 class="hero-line hero-line--ai" aria-label="AI Engineer">
+                            <span class="hero-word" data-split="19" aria-hidden="true">AI</span>
+                            <span class="hero-word" data-split="21" aria-hidden="true">Engineer</span>
+                        </h2>
+                        <div class="hero-capability-set">
+                            <ul class="hero-capabilities" aria-label="AI Engineer capabilities">
+                                <li>Machine learning models</li>
+                                <li>Computer vision</li>
+                                <li>Data analysis</li>
+                            </ul>
+                        </div>
+                    </div>
 
                     <div class="hero-figure">
                         <img src="profile-face-v2.png" alt="NourEddin Abu-Salhieh" class="hero-photo" width="1060" height="1484">
                     </div>
+                    <a href="#contact" class="button primary hero-cta">Hire Me</a>
+                </div>
 
-                    <div class="hero-row">
-                        <ul class="hero-capabilities hero-capabilities--full-stack" aria-label="Full Stack Developer capabilities">
-                            <li>Responsive websites</li>
-                            <li>E-commerce stores</li>
-                            <li>Backends &amp; databases</li>
-                        </ul>
-                        <ul class="hero-capabilities hero-capabilities--ai" aria-label="AI Engineer capabilities">
-                            <li>Machine learning models</li>
-                            <li>Computer vision</li>
-                            <li>Data analysis</li>
-                        </ul>
-                        <a href="#contact" class="button primary">Hire Me</a>
-                    </div>
-
+                <div class="hero-hybrid">
+                    <p class="hero-hybrid-disciplines">Full Stack <span aria-hidden="true">+</span> UI/UX <span aria-hidden="true">+</span> AI</p>
+                    <h2>One hybrid skill set.</h2>
+                    <p>Designing the experience, building the application<br class="hero-hybrid-break"> and bringing intelligence into it.</p>
                 </div>
 
             </div>
@@ -164,12 +180,16 @@
             </div>
 
             <div class="about-text reveal right" style="--d:120ms">
-                <h2>Turning AI models into <span class="grad-text">simple apps</span></h2>
+                <h2>A hybrid approach to <span class="grad-text">building products</span></h2>
 
                 <p>
-                    I build things at the intersection of AI, hardware and
-                    mobile design. My focus is machine learning and computer vision, and I love
-                    turning advanced AI models into simple apps that people enjoy using.
+                    I work across full-stack development, UI/UX design and AI engineering.
+                    This hybrid skill set lets me connect user needs and interface design
+                    with application development, machine learning and computer vision.
+                </p>
+                <p>
+                    My projects bring together web and mobile experiences, data and hardware,
+                    with a focus on turning advanced models into practical apps that people enjoy using.
                 </p>
 
                 <div class="about-stats">
@@ -765,6 +785,7 @@
 
     <script src="project-tabs.js?v=3"></script>
     <script src="main.js?v=34"></script>
+    <script src="hero-motion.js?v=1"></script>
 
 </body>
 

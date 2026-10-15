@@ -522,10 +522,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 
 /* ---------- 8. Hero ---------- */
 
-/*  The hero is a full-bleed colour band. The portrait is anchored to the
-    band's bottom edge, so the figure stands on the line that divides the
-    hero from the rest of the page.                                        */
-
+/* The role, primary design discipline and capabilities stay together. */
 .hero {
     margin-bottom: 0;
     scroll-margin-top: 0;
@@ -533,152 +530,152 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 
 .hero-band {
     position: relative;
-    padding: clamp(var(--space-4), 2.2vw, var(--space-8)) var(--section-gutter) 0;
-    text-align: center;
-
+    padding: var(--space-8) var(--section-gutter) 0;
     background: var(--hero-band);
     border-bottom: 1px solid var(--hero-edge);
     overflow: hidden;
 }
 
-/* --- stage: roles on either side of the centered portrait --- */
-
 .hero-stage {
-    /* Reserve room for the navbar and top padding. Compact layouts let the
-       capabilities flow below the portrait within the same hero band. */
-    --photo-ratio: 1.4;      /* 1484 / 1060, enhanced portrait proportions */
-    --crop-top: 0.06;
-    --crop-bottom: 0.82;
+    --photo-ratio: 1.4;
+    --crop-top: .06;
+    --crop-bottom: .82;
     --visible-ratio: calc(var(--photo-ratio) * (var(--crop-bottom) - var(--crop-top)));
-    --hero-reserve: 130px;
-    --figure-cap: calc((100vh - var(--hero-reserve)) / var(--visible-ratio));
-    --figure-cap: calc((100svh - var(--hero-reserve)) / var(--visible-ratio));
-    --figure-w: min(clamp(300px, 44vw, 620px), var(--figure-cap));
+    --figure-w: clamp(300px, 44vw, 620px);
     --hero-columns: minmax(0, 1fr) calc(var(--figure-w) * .65) minmax(0, 1fr);
-
     position: relative;
-    display: block;
+    display: grid;
+    grid-template-columns: var(--hero-columns);
+    column-gap: var(--space-4);
+    row-gap: var(--space-6);
+    align-content: end;
+    min-height: calc(var(--figure-w) * var(--visible-ratio));
     width: min(100%, 1520px);
-    margin: 0 auto;
-}
-
-/* Crop the portrait at the thigh without clipping the surrounding role text. */
-.hero-figure {
-    position: relative;
-    z-index: 2;
-    width: var(--figure-w);
-    height: calc(var(--figure-w) * var(--photo-ratio) *
-                 (var(--crop-bottom) - var(--crop-top)));
-    overflow: hidden;
     margin-inline: auto;
-    margin-bottom: -1px;
+    padding-block: var(--space-8);
 }
 
-/* pulled up by the dead space above his head, so the gap under the navbar is
-   real padding rather than empty pixels baked into the photo */
+.hero-role {
+    position: relative;
+    z-index: 3;
+    container-type: inline-size;
+    min-width: 0;
+    grid-row: 1;
+}
+.hero-role--full-stack { grid-column: 1; text-align: left; }
+.hero-role--ai { grid-column: 3; text-align: right; }
+
+.hero-line {
+    font-size: min(var(--text-hero), var(--text-hero-fit));
+    font-weight: var(--weight-display);
+    line-height: var(--leading-hero);
+    letter-spacing: var(--tracking-hero);
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--muted);
+    opacity: var(--merge-scene-opacity, 1);
+}
+.hero-line--full-stack {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--muted);
+}
+.hero-word { display: block; }
+.hero-line--ai {
+    width: max-content;
+    max-width: 100%;
+    margin-left: auto;
+    text-align: left;
+}
+
+.hero-capability-set {
+    margin-top: var(--space-4);
+    transform: translate(var(--merge-x, 0px), var(--merge-y, 0px));
+    opacity: var(--merge-copy-opacity, 1);
+}
+.hero-capabilities {
+    display: grid;
+    gap: var(--space-2);
+    list-style: none;
+    font-size: var(--text-card);
+    line-height: var(--leading-small);
+    color: var(--muted);
+}
+.hero-design { margin-top: var(--space-6); }
+.hero-design h3 {
+    margin-bottom: var(--space-3);
+    color: var(--ink);
+    font-size: var(--text-subheading);
+    line-height: var(--leading-card);
+}
+
+.hero-figure {
+    position: absolute;
+    z-index: 2;
+    inset: auto auto 0 50%;
+    transform: translateX(-50%);
+    width: var(--figure-w);
+    height: calc(var(--figure-w) * var(--visible-ratio));
+    overflow: hidden;
+    opacity: var(--merge-scene-opacity, 1);
+    pointer-events: none;
+}
 .hero-photo {
     display: block;
     width: 100%;
     height: auto;
     margin-top: calc(var(--figure-w) * var(--photo-ratio) * var(--crop-top) * -1);
 }
-
-/* soft contact shadow where the figure meets the line */
-.hero-stage::after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    left: 50%;
-    bottom: -4px;
-    width: calc(var(--figure-w) * .64);
-    height: 26px;
-    transform: translateX(-50%);
-    border-radius: var(--radius-round);
-    background: radial-gradient(ellipse at center, var(--hero-shadow), transparent 72%);
-    filter: blur(7px);
+.hero-cta { position: relative; z-index: 5; grid-column: 1; grid-row: 2; justify-self: start; }
+.hero:not(.is-merging) .hero-figure {
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--space-14)), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - var(--space-14)), transparent);
 }
 
-/* Use the transparent margins of the portrait for larger role headings. */
-.hero-backdrop {
+/* The centered introduction is readable even without JavaScript or motion. */
+.hero-hybrid {
+    padding: var(--section-space) 0;
+    text-align: center;
+}
+.hero-hybrid-disciplines {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-card);
+    font-weight: var(--weight-semibold);
+    color: var(--accent);
+}
+.hero-hybrid h2 { font-size: var(--text-page); line-height: var(--leading-heading); }
+.hero-hybrid > p:last-child {
+    margin-top: var(--space-5);
+    font-size: var(--text-card);
+    line-height: var(--leading-small);
+    color: var(--muted);
+}
+.hero.is-merging .hero-band { position: sticky; top: var(--hero-sticky-top, var(--nav-offset)); }
+.hero.is-merging .hero-hybrid {
     position: absolute;
-    z-index: 1;
-    inset: calc(var(--figure-w) * var(--visible-ratio) * .42) 0 auto;
-    transform: translateY(-50%);
-
-    display: grid;
-    grid-template-columns: var(--hero-columns);
-    column-gap: var(--space-4);
-    align-items: center;
-
+    z-index: 4;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-inline: var(--section-gutter);
+    opacity: var(--merge-message-opacity, 0);
+    transform: translateY(var(--merge-message-y, 0px));
     pointer-events: none;
 }
 
-.hero-line {
-    display: block;
-    container-type: inline-size;
-    font-family: var(--font-display);
-    grid-row: 1;
-    font-size: var(--text-hero);
-    font-weight: var(--weight-display);
-    line-height: var(--leading-hero);
-    text-transform: uppercase;
-    white-space: nowrap;
-    color: var(--muted);
-}
-
-.hero-line--full-stack {
-    grid-column: 1;
-    text-align: left;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--muted);
-}
-
-.hero-line--ai { grid-column: 3; text-align: right; }
-.hero-line--ai .hero-word { text-align: right; }
-.hero-word {
-    display: block;
-    font-size: min(1em, var(--text-hero-fit));
-    letter-spacing: var(--tracking-hero);
-}
-
-/* per-letter entrance */
+/* Initial title entrance is separate from the scroll-driven transition. */
 .hero-line .ltr {
     display: inline-block;
     opacity: 0;
     transform: translateY(34px) rotate(5deg);
     animation: letterIn .7s var(--ease) forwards;
 }
-
 @keyframes letterIn {
-    to { opacity: 1; transform: translateY(0) rotate(0); }
+    to { opacity: 1; transform: none; }
 }
-
-
-/* Capabilities and the call to action share the lower portrait band. */
-.hero-row {
-    position: absolute;
-    z-index: 4;
-    inset: auto 0 var(--space-8);
-    display: grid;
-    grid-template-columns: var(--hero-columns);
-    column-gap: var(--space-4);
-    row-gap: var(--space-6);
-    text-align: left;
-}
-
-.hero-capabilities {
-    display: grid;
-    align-content: start;
-    gap: var(--space-2);
-    list-style: none;
-    font-size: var(--text-body);
-    line-height: var(--leading-small);
-    color: var(--muted);
-}
-
-.hero-capabilities--full-stack { grid-column: 1; grid-row: 1; }
-.hero-capabilities--ai { grid-column: 3; grid-row: 1; text-align: right; }
-.hero-row .button { grid-column: 1; grid-row: 2; justify-self: start; }
 
 
 /* ---------- 10. About ---------- */
@@ -1040,20 +1037,24 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     .theme-label { display: block; font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--muted); }
 }
 
-/* Let the lower hero grow naturally when side space or height is limited. */
-@media (max-width: 1100px), (max-height: 700px) {
-    .hero-row {
+@media (max-width: 1100px) {
+    .hero-stage {
+        --figure-w: clamp(300px, 40vw, 440px);
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-content: start;
+        row-gap: var(--space-8);
+        padding-top: 0;
+    }
+    .hero-role--ai { grid-column: 2; }
+    .hero-figure {
         position: relative;
         inset: auto;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        padding-block: var(--space-6) var(--space-8);
+        transform: none;
+        grid-column: 1 / -1;
+        grid-row: 2;
+        justify-self: center;
     }
-    .hero-capabilities--ai { grid-column: 2; }
-    .hero-figure {
-        -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--space-14)), transparent);
-        mask-image: linear-gradient(to bottom, #000 calc(100% - var(--space-14)), transparent);
-    }
-    .hero-stage::after { display: none; }
+    .hero-cta { grid-row: 3; }
 }
 
 @media (max-width: 620px) {
@@ -1061,19 +1062,18 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     .brand-name { font-size: var(--text-sm); }
 
 
-    .hero-stage { --hero-reserve: 280px; --figure-w: clamp(230px, 74vw, 400px); }
-    /* Stagger the larger roles above the portrait when side-by-side space is limited. */
-    .hero-backdrop {
-        position: relative;
-        inset: auto;
-        transform: none;
+    .hero-stage {
+        --figure-w: clamp(230px, 74vw, 400px);
         grid-template-columns: minmax(0, 1fr);
-        row-gap: var(--space-3);
-        margin-bottom: var(--space-4);
     }
+    .hero-role--full-stack { grid-column: 1; grid-row: 1; }
+    .hero-role--ai { grid-column: 1; grid-row: 2; }
     .hero-line { font-size: var(--text-hero-mobile); }
-    .hero-line--ai { grid-column: 1; grid-row: 2; }
-    .hero-capabilities { font-size: var(--text-sm); }
+    .hero-figure { grid-column: 1; grid-row: 3; }
+    .hero-cta { grid-column: 1; grid-row: 4; }
+    .hero-hybrid-break { display: none; }
+    .hero-hybrid-disciplines { font-size: var(--text-body); gap: var(--space-2); }
+    .hero-hybrid > p:last-child { font-size: var(--text-body); }
 
     .about { flex-direction: column; }
     .about-media { width: min(300px, 82%); }
@@ -1085,24 +1085,6 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     .contact-value { font-size: var(--text-sm); word-break: break-word; }
 
     .to-top { right: var(--space-4); bottom: var(--space-4); }
-}
-
-
-@media (max-width: 620px) and (max-height: 400px) and (min-aspect-ratio: 4/3) {
-    .hero-stage {
-        --hero-reserve: 160px;
-        --figure-w: min(clamp(230px, 74vw, 400px), var(--figure-cap));
-    }
-    .hero-backdrop {
-        position: absolute;
-        inset: calc(var(--figure-w) * var(--visible-ratio) * .3) 0 auto;
-        transform: translateY(-50%);
-        grid-template-columns: var(--hero-columns);
-        margin-bottom: 0;
-    }
-    .hero-line { font-size: var(--text-hero-landscape); }
-    .hero-line--ai { grid-column: 3; grid-row: 1; }
-    .hero-backdrop { row-gap: 0; }
 }
 
 
