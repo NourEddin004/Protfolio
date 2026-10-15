@@ -544,8 +544,8 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 /* --- stage: roles on either side of the centered portrait --- */
 
 .hero-stage {
-    /* Reserve room for the navbar and top padding. The controls now sit
-       inside the portrait band, so they need no separate row below it. */
+    /* Reserve room for the navbar and top padding. Compact layouts let the
+       capabilities flow below the portrait within the same hero band. */
     --photo-ratio: 1.4;      /* 1484 / 1060, enhanced portrait proportions */
     --crop-top: 0.06;
     --crop-bottom: 0.82;
@@ -554,6 +554,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     --figure-cap: calc((100vh - var(--hero-reserve)) / var(--visible-ratio));
     --figure-cap: calc((100svh - var(--hero-reserve)) / var(--visible-ratio));
     --figure-w: min(clamp(300px, 44vw, 620px), var(--figure-cap));
+    --hero-columns: minmax(0, 1fr) calc(var(--figure-w) * .65) minmax(0, 1fr);
 
     position: relative;
     display: block;
@@ -561,9 +562,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     margin: 0 auto;
 }
 
-/* The portrait runs larger than the band can show and is clipped at the thigh,
-   so the crop lands on the divider. The clip lives on this wrapper rather than
-   on .hero-stage, which would also cut off the backdrop type. */
+/* Crop the portrait at the thigh without clipping the surrounding role text. */
 .hero-figure {
     position: relative;
     z-index: 2;
@@ -603,11 +602,11 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 .hero-backdrop {
     position: absolute;
     z-index: 1;
-    inset: 42% 0 auto;
+    inset: calc(var(--figure-w) * var(--visible-ratio) * .42) 0 auto;
     transform: translateY(-50%);
 
     display: grid;
-    grid-template-columns: minmax(0, 1fr) calc(var(--figure-w) * .65) minmax(0, 1fr);
+    grid-template-columns: var(--hero-columns);
     column-gap: var(--space-4);
     align-items: center;
 
@@ -635,6 +634,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 }
 
 .hero-line--ai { grid-column: 3; text-align: right; }
+.hero-line--ai .hero-word { text-align: right; }
 .hero-word {
     display: block;
     font-size: min(1em, var(--text-hero-fit));
@@ -654,22 +654,31 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 }
 
 
-/* --- call to action, anchored inside the portrait band --- */
-
+/* Capabilities and the call to action share the lower portrait band. */
 .hero-row {
     position: absolute;
     z-index: 4;
-    left: clamp(18px, 3vw, 40px);
-    right: clamp(18px, 3vw, 40px);
-    bottom: clamp(18px, 2.4vw, 32px);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: var(--space-6);
-    pointer-events: none;
+    inset: auto 0 var(--space-8);
+    display: grid;
+    grid-template-columns: var(--hero-columns);
+    column-gap: var(--space-4);
+    row-gap: var(--space-6);
+    text-align: left;
 }
 
-.hero-row > * { pointer-events: auto; }
+.hero-capabilities {
+    display: grid;
+    align-content: start;
+    gap: var(--space-2);
+    list-style: none;
+    font-size: var(--text-body);
+    line-height: var(--leading-small);
+    color: var(--muted);
+}
+
+.hero-capabilities--full-stack { grid-column: 1; grid-row: 1; }
+.hero-capabilities--ai { grid-column: 3; grid-row: 1; text-align: right; }
+.hero-row .button { grid-column: 1; grid-row: 2; justify-self: start; }
 
 
 /* ---------- 10. About ---------- */
@@ -1031,19 +1040,20 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     .theme-label { display: block; font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--muted); }
 }
 
-@media (max-width: 760px) {
-    /* A soft fade keeps the corner controls readable over the lower suit. */
-    .hero-band::after {
-        content: "";
-        position: absolute;
-        z-index: 3;
-        inset: auto 0 0;
-        height: 180px;
-        background: linear-gradient(0deg, var(--hero-floor), color-mix(in srgb, var(--hero-floor) 94%, transparent) 35%, transparent);
-        pointer-events: none;
+/* Let the lower hero grow naturally when side space or height is limited. */
+@media (max-width: 1100px), (max-height: 700px) {
+    .hero-row {
+        position: relative;
+        inset: auto;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding-block: var(--space-6) var(--space-8);
     }
-    .hero-row { gap: var(--space-4); }
-    .hero-row .button { padding-inline: var(--space-5); }
+    .hero-capabilities--ai { grid-column: 2; }
+    .hero-figure {
+        -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--space-14)), transparent);
+        mask-image: linear-gradient(to bottom, #000 calc(100% - var(--space-14)), transparent);
+    }
+    .hero-stage::after { display: none; }
 }
 
 @media (max-width: 620px) {
@@ -1051,7 +1061,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     .brand-name { font-size: var(--text-sm); }
 
 
-    .hero-stage { --hero-reserve: 280px; --figure-w: min(clamp(230px, 74vw, 400px), var(--figure-cap)); }
+    .hero-stage { --hero-reserve: 280px; --figure-w: clamp(230px, 74vw, 400px); }
     /* Stagger the larger roles above the portrait when side-by-side space is limited. */
     .hero-backdrop {
         position: relative;
@@ -1063,8 +1073,7 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
     }
     .hero-line { font-size: var(--text-hero-mobile); }
     .hero-line--ai { grid-column: 1; grid-row: 2; }
-    .hero-line--ai .hero-word { display: inline; }
-    .hero-line--ai .hero-word + .hero-word { margin-left: .2em; }
+    .hero-capabilities { font-size: var(--text-sm); }
 
     .about { flex-direction: column; }
     .about-media { width: min(300px, 82%); }
@@ -1080,20 +1089,20 @@ html[data-theme="dark"] .theme-knob .sun  { display: block; }
 
 
 @media (max-width: 620px) and (max-height: 400px) and (min-aspect-ratio: 4/3) {
-    .hero-stage { --hero-reserve: 160px; }
+    .hero-stage {
+        --hero-reserve: 160px;
+        --figure-w: min(clamp(230px, 74vw, 400px), var(--figure-cap));
+    }
     .hero-backdrop {
         position: absolute;
-        inset: 30% 0 auto;
+        inset: calc(var(--figure-w) * var(--visible-ratio) * .3) 0 auto;
         transform: translateY(-50%);
-        grid-template-columns: minmax(0, 1fr) calc(var(--figure-w) * .65) minmax(0, 1fr);
+        grid-template-columns: var(--hero-columns);
         margin-bottom: 0;
     }
     .hero-line { font-size: var(--text-hero-landscape); }
     .hero-line--ai { grid-column: 3; grid-row: 1; }
-    .hero-line--ai .hero-word { display: block; }
-    .hero-line--ai .hero-word + .hero-word { margin-left: 0; }
     .hero-backdrop { row-gap: 0; }
-    .hero-band::after { display: none; }
 }
 
 
